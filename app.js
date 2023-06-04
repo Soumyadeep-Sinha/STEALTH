@@ -3,6 +3,7 @@ const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require('express-session');
 const geoip = require('geoip-lite');
+require("dotenv").config();
 
 const port = 3000;
 
@@ -21,9 +22,10 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 const locale = "mongodb://localhost:27017/stealthDB";
+const uri = process.env.CONNECTOR;
 
 // CONNECTION
-mongoose.connect(locale, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("successfully connected to your MongoDB database."))
     .catch((error) => { 
         console.log(error)

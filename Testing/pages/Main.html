@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STEALTH</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+    html,body{
+        margin: 0;
+        background-color: #434343;
+        background-image: url("../public/images/background.jpg");
+        background-repeat: no-repeat;
+        background-size: cover;
+    }
+    ::-webkit-scrollbar{
+        display: none;
+    }
+    .main{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+    }
+    .main p{
+        font-family: 'Bruno Ace SC', cursive;
+        font-size: 10rem;
+        margin: 30px 0;
+        color: silver;
+    }
+    .main h1{
+        font-family: 'Bruno Ace SC', cursive;
+        margin: 10px 0;
+        color: #b1b1b1;
+    }
+    .redirect-btns{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .redirect-btns button{
+        background-color: black;
+        color: aliceblue;
+        padding: 10px 20px;
+        font-size: 28px;
+        margin: 20px;
+        border-radius: 50px;
+        border: 3px solid #565656;
+    }
+
+    .redirect-btns button:hover{
+        background-color: #2c2c2c;
+        color: white;
+    }
+    footer h4{
+        margin-top: 3rem;
+        font-family:Arial, Helvetica, sans-serif;
+        color: aliceblue;
+    }
+</style>
+<body>
+    <div class="main">
+        <p>STEALTH</p>
+        <h1>As the name suggests...</h1>
+        <div class="redirect-btns">
+            <form action="/login" method="get">
+                <button type="submit">Login</button>
+            </form>
+            <form action="/register" method="get">
+                <button type="submit">SignUp</button>
+            </form>
+        </div>
+        <footer>
+            <h4>Copyright ©️, 2023, STEALTH</h4>
+        </footer>
+    </div>
+
+    
+</body>
+</html>
