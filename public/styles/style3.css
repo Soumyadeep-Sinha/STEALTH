@@ -1,0 +1,99 @@
+.Footer-section{
+    margin-top: 20px;
+    background-color: #1d1d1d;
+    display: flex;
+    flex-direction: column;
+    color: white;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border-radius: 20px;
+}
+
+.Footer-section p{
+    font-size: 18px;
+    margin: 5px 0;
+}
+
+.preview img{
+    width: 250px;
+    height: 200px;
+    border-radius: 20px;
+    border: 2px solid rgb(135, 135, 135);
+    background-color: white;
+}
+
+.searchBar {
+    padding-right: 30px;
+}
+
+.searchBar input:focus{
+    background-color:rgb(39, 31, 55);
+    outline: 0px solid #8c06d4;
+}
+
+.search-btn{
+    padding: 8px 20px;
+    border-radius: 20px 0 0 20px;
+    border: 0px;
+    background-color: aqua;
+    transition: 0.5s;
+}
+
+.search-btn:hover{
+    background-color: rgb(24, 180, 180);
+    transition: 0.5s;
+}
+
+.search-box{
+    padding: 8px 20px;
+    border-radius: 0 20px 20px 0;
+    border: 0px;
+    background-color: #3b3b3b;
+    color: white;
+}
+
+.react-btn-like{
+    color: white;
+}
+.react-btn-dislike{
+    color: white;
+}
+.react-btn-award{
+    color: white;
+}
+
+.react-btn-like:hover{
+    color: rgb(17, 255, 0);
+    font-size: 30px;
+    animation: circle 0.5s 1;
+}
+.react-btn-dislike:hover{
+    color: rgb(255, 0, 0);
+    font-size: 30px;
+    animation: circle 0.5s 1;
+}
+.react-btn-award:hover{
+    color: yellow;
+    font-size: 30px;
+    animation: circle 0.5s 1;
+}
+
+@keyframes circle {
+    0%{
+        transform: rotate(0deg)
+    }
+    25%{
+        transform: rotate(90deg)
+    }
+    50%{
+        transform: rotate(180deg)
+    }
+    75%{
+        transform: rotate(270deg)
+    }
+    100%{
+        transform: rotate(360deg)
+    }
+}
+

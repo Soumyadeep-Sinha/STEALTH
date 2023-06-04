@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="stylesheet" href="../public/styles/auth.css">
+    <link rel="stylesheet" href="../public/styles/style1.css">
+    <link rel="stylesheet" href="../public/styles/style2.css">
+    <link rel="stylesheet" href="../public/styles/style3.css">
+    <link rel="stylesheet" href="../public/styles/index.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+        data-auto-replace-svg="nest"></script>
+</head>
+
+<style>
+    html{
+        cursor: url("../public/images/dummy.jpg"), auto;
+    }
+</style>
+
+<body>
+    <div>
+
+        <!-- header -->
+        <div class="Mainheader" id="navbar">
+            <h2>STEALTH</h2>
+            <div class="searchBar">
+                <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input type="text" class="search-box" placeholder="search" />
+            </div>
+        </div>
+
+        <!-- mainsection -->
+
+        <!-- left -->
+        <div class="mainsection">
+            <div class="profileinfo">
+                <div class="profile-comp" id="profile-info-basic">
+                    <img src="../public/images/dummy.jpg" alt="postimage" class="profile-pic" />
+                    <p>Panther_84</p>
+                </div>
+                <div class="endorsements" id="endorsement-section">
+                    <h3>
+                        <i class="fa-solid fa-thumbs-up"></i> 10000
+                    </h3>
+                    <h3>
+                        <i class="fa-solid fa-award"></i> &nbsp;50
+                    </h3>
+                </div>
+
+                <div class="bio" id="bio-section">
+                    <p>this is our bio. hello i am a web developer, Welcome to the STEALTH project.</p>
+                </div>
+            </div>
+
+            <!-- main posts -->
+            <div class="content">
+                <div class="caption" id="post-box">
+                    <div class="topLine">
+                        <img src="../public/images/dummy.jpg" alt="postimage" class="avatar" />
+
+                        <div class="details">
+                            <p>Panther_84</p>
+                            <h4>this is a caption</h4>
+                        </div>
+
+                    </div>
+                    <img src="../public/images/day.jpg" alt="postimage" class="postimage" />
+
+
+                    <div class="action-btn">
+                        <button class="react-btn-like"><i class="fa-solid fa-thumbs-up"></i></button>
+                        <p>10000</p>
+                        <button class="react-btn-dislike"><i class="fa-solid fa-thumbs-down"></i></button>
+                        <p>50</p>
+                        <button class="react-btn-award"><i class="fa-solid fa-award"></i></button>
+                        <p>10</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- right -->
+            <div class="misclaneous">
+                <div class="new-post" id="new-post">
+                    <form action="" method="post" class="post-form" id="new-post-form">
+                        <input type="text" placeholder="Enter caption" id="cap-input" />
+                        <div class="align-btn">
+                            <label class="label">
+                                <input type="file" id="avatar" name="postimg" ref={imageRef}
+                                    accept="image/png, image/jpeg" />
+                                <span><i class="fa-solid fa-image"></i></span>
+                            </label>
+                            <button type="submit"><i class="fa-solid fa-check"></i> Create </button>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="feature-buttons" id="feature-btns">
+                    <button class="general-btn"><i class="fa-solid fa-user"></i></button>
+                    <button class="general-btn"><i class="fa-solid fa-shield-halved"></i></button>
+                    <button class="general-btn"><i class="fa-brands fa-github"></i></button>
+                    <button class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i></button>
+                </div>
+
+                <div class="Footer-section" id="footer-sec">
+                    <p>copyright ©️ {year} STEALTH</p>
+                    <p>App Created by Soumyadeep</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>

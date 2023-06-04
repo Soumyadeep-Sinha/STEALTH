@@ -1,0 +1,133 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+
+
+.auth-page{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 85vh;
+}
+
+.auth-left-side{
+    margin: 30px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.auth-left-side h1{
+    font-size: 60px;
+    color: #cbc9f9;
+    margin: 20px 0;
+    font-family: 'Bruno Ace SC', cursive;
+
+    text-align: center;
+}
+
+.auth-left-side img{
+    width: 300px;
+    height: 300px;
+    filter: grayscale(0);
+    margin: 10px;
+}
+
+.auth-login-form-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border-radius: 20px;
+    background-color: #00000065;
+    /* border: 2px solid rgb(0, 255, 0); */
+}
+
+.auth-login-form-container img{
+    width: 100px;
+    height: 100px;
+    margin: 20px;
+    border-radius: 100px;
+    border: 3px solid rgb(0, 255, 0);
+}
+
+.auth-login-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-login-form input{
+    margin: 10px;
+    padding: 10px 10px;
+    border-radius: 20px;
+    border: 0px;
+    font-size: 20px;
+    background-color: rgb(75, 75, 75);
+    color: greenyellow;
+    text-align: center;
+}
+
+.auth-login-form input::placeholder{
+    color: white;
+    font-size: 15px;
+}
+
+.auth-login-form input:focus{
+    outline: 2px solid greenyellow;
+    background-color: rgb(34, 34, 34);
+}
+
+.auth-login-form button{
+    margin: 10px;
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: 0px;
+    background-color: rgb(46, 177, 26);
+    color: rgb(255, 255, 255);
+    transition: 0.5s;
+    font-size: 20px;
+}
+
+.auth-login-form button:hover{
+    background-color: rgb(0, 114, 8);
+    transition: 0.5s;
+}
+
+.show-pwd{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.show-pwd p{
+    color: aliceblue;
+}
+
+.register-button{
+    border: 0px;
+    background-color: rgba(255, 255, 255, 0);
+    color: white;
+    margin: 10px 0;
+    font-size: 18px;
+    transition: 0.5s;
+}
+
+.register-button:hover{
+    color: rgb(113, 134, 255);
+    transition: 0.5s;
+}
+
+.login-error{
+    font-size: 14px;
+    color: red;
+    /* display: none; */
+}
+
+.auth-login-form-2{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

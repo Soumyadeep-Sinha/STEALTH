@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+        <%=username%> Profile
+    </title>
+    <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="../styles/Profilepage.css">
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/style3.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+        data-auto-replace-svg="nest"></script>
+</head>
+
+<body>
+    <!-- header -->
+    <div class="Mainheader" id="navbar">
+        <h2>STEALTH</h2>
+        <form action="/search" method="post" class="searchBar">
+            <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input name="searchName" type="text" class="search-box" placeholder="search" required />
+        </form>
+    </div>
+
+    <div class="profile-mainsection">
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="../images/dummy.jpg" alt="">
+            </div>
+            <h2 class="profile-name">
+                <%=username%>
+            </h2>
+            <h2 class="general-info"><i class="fa-solid fa-thumbs-up"></i> <%=totalLikes%></h2>
+            <h2 class="general-info"><i class="fa-solid fa-award"></i> <%=totalAwards%></h2>
+            <h3 class="bio-text"><%=Bio%></h3>
+
+            <p style="color:white;">Copyright <%=year%>, STEALTH</p>
+        </div>
+
+        <div class="content" id="profile-content">
+            <% posts.forEach((post)=> { %>
+                <div class="caption" id="post-box">
+                    <div class="topLine">
+                        <img src="../images/dummy.jpg" alt="postimage" class="avatar" />
+
+                        <div class="details">
+                            <h4>
+                                <%=post.Caption%>
+                            </h4>
+                        </div>
+
+                    </div>
+                    <img src="../<%=post.ImageUrl%>" alt="postimage" class="postimage" />
+                    <!-- <img src="../public/images/day.jpg" alt="postimage" class="postimage" /> -->
+
+                    <!-- <div class="action-btn">
+                        <button class="react-btn-like" onclick="handleAction('<%= post._id %>', 'like')"><i
+                                class="fa-solid fa-thumbs-up"></i></button>
+                        <p id="likesCount_<%= post._id %>">
+                            <%= post.Likes %>
+                        </p>
+
+                        <button class="react-btn-dislike" onclick="handleAction('<%= post._id %>', 'dislike')"><i
+                                class="fa-solid fa-thumbs-down"></i></button>
+                        <p id="dislikesCount_<%= post._id %>">
+                            <%= post.Dislikes %>
+                        </p>
+
+                        <button class="react-btn-award" onclick="handleAction('<%= post._id %>', 'award')"><i
+                                class="fa-solid fa-award"></i></button>
+                        <p id="awardsCount_<%= post._id %>">
+                            <%= post.Awards %>
+                        </p>
+                    </div> -->
+                </div>
+                <% }) %>
+        </div>
+
+    </div>
+</body>
+
+</html>

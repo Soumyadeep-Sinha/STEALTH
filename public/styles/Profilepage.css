@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+
+.profile-mainsection {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* border: 2px solid red; */
+    height: 85vh;
+}
+
+.profile-image img {
+    width: 12rem;
+    height: 12rem;
+    border-radius: 50%;
+    border: 3px solid #adff2f;
+}
+
+.profile-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 25%;
+    padding: 30px 20px;
+    border-radius: 20px;
+    background-color: #181818;
+}
+
+.profile-name {
+    color: greenyellow;
+    text-decoration: underline;
+    margin: 10px;
+    font-size: 28px;
+}
+
+.general-info {
+    color: aliceblue;
+    margin: 5px;
+}
+
+#profile-content {
+    width: 60%;
+}
+
+.profile-section button {
+    padding: 10px 20px;
+    margin: 10px;
+    border-radius: 50px;
+    font-size: 15px;
+    background-color: #6f00e5;
+    color: #ffffff;
+    transition: 0.5s;
+    border: 0px;
+}
+
+.profile-section button:hover {
+    background-color: #300063;
+    transition: 0.5s;
+}
+
+.delete-btn-form button {
+    margin-right: 20px;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 26px;
+    color: #ff7676;
+    background-color: #ffffff00;
+    border: 2px solid #ff7676;
+    transition: 0.5s;
+}
+
+.delete-btn-form button:hover {
+    color: #00ffcc;
+    border: 2px solid #00ffe5;
+    transition: 0.5s;
+}
+
+.check-btn-form button {
+    margin-right: 20px;
+    padding: 10px 15px;
+    border-radius: 50%;
+    font-size: 26px;
+    color: #ff0000;
+    background-color: #ffffff00;
+    border: 2px solid #ff0000;
+    transition: 0.5s;
+}
+
+.check-btn-form button:hover {
+    color: #48ff00;
+    border: 2px solid #00ff08;
+    transition: 0.5s;
+}
+
+.bio-text{
+    font-family: Arial, Helvetica, sans-serif;
+    color: white;
+    background-color: #424242;
+    padding: 1rem;
+    border-radius: 10px;
+    width: 70%;
+}

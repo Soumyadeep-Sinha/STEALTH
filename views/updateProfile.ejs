@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="../styles/Profilepage.css">
+    <link rel="stylesheet" href="../styles/index.css">
+    <link rel="stylesheet" href="../styles/style3.css">
+    <link rel="stylesheet" href="../styles/profile-update.css">
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+        data-auto-replace-svg="nest"></script>
+</head>
+
+<body>
+    <!-- header -->
+    <div class="Mainheader" id="navbar">
+        <h2>STEALTH</h2>
+        <form action="/search" method="post" class="searchBar">
+            <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+            <input name="searchName" type="text" class="search-box" placeholder="search" required />
+        </form>
+    </div>
+    <style>
+        .del-pro-btn button{
+            background-color: red;
+        }
+
+        .del-pro-btn button:hover{
+            background-color: #750000;
+        }
+    </style>
+
+    <div class="profile-mainsection-update">
+        <div class="profile-section">
+            <div class="profile-image">
+                <img src="../images/dummy.jpg" alt="">
+            </div>
+            <h2 class="profile-name"><%=username%></h2>
+            <h2 class="general-info"><i class="fa-solid fa-thumbs-up"></i> <%=totalLikes%></h2>
+            <h2 class="general-info"><i class="fa-solid fa-award"></i> <%=totalAwards%></h2>
+            <h3 class="bio-text"><%=Bio%></h3>
+
+            <form action="/deleteUser" class="del-pro-btn">
+                <button type="button" id="del-btn" onclick="confdel()">Delete Profile</button>
+                <button id="conf-button" type="submit">Click again to confirm delete. All data will be lost. This cannot be undone!</button>
+            </form>
+
+            <p style="color:white;">Copyright 2023, STEALTH</p>
+        </div>
+
+        <div class="update-profile-area">
+            <h1>UPDATE YOUR PROFILE</h1>
+            <form action="/UpdateUser" method="post" class="profile-update-form">
+                <label for="up-username">Update UserName</label>
+                <input type="text" id="up-username" name="upusername" placeholder="Update username">
+
+                <label for="up-bio">Update Bio</label>
+                <textarea name="upbio" id="up-bio" cols="" rows="2" placeholder="create new bio"></textarea>
+
+                <label for="old-password">Old password</label>
+                <input type="password" id="old-password" name="oldpwd" placeholder="Enter old password" required>
+
+                <label for="new-password">New password</label>
+                <input type="password" id="new-password" name="newpwd" placeholder="Enter New password (optional)">
+
+                <p><%=error%></p>
+
+                <button class="update-btn">Update Profile</button>
+            </form>
+        </div>
+
+    </div>
+</body>
+<script>
+    function confdel() {
+        document.getElementById("conf-button").style.display = "block";
+        document.getElementById("del-btn").style.display = "none";
+    }
+</script>
+
+</html>

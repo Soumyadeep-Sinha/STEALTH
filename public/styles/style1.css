@@ -1,0 +1,52 @@
+.profileinfo{
+    width: 20%;
+    padding: 10px;
+}
+.profile-pic{
+    height: 200px;
+    width: 200px;
+    border-radius: 100px;
+}
+
+.profile-comp{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #282828;
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+}
+
+.profile-comp p{
+    font-size: 26px;
+}
+
+.endorsements{
+    border-radius: 20px;
+    color: aliceblue;
+    padding: 10px;
+    margin-bottom: 20px;
+    background-color: #1d1d1d;
+    font-size: 28px;
+    text-align: center;
+}
+
+.endorsements h3{
+    margin: 2px;
+}
+
+.bio{
+    background-color: #1d1d1d;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: left;
+}
+
+.bio p{
+    color: aliceblue;
+    font-size: 20px;
+    margin: 2px;
+}

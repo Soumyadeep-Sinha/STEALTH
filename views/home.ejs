@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+
+    <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
+
+    <link rel="stylesheet" href="../styles/auth.css">
+    <link rel="stylesheet" href="../styles/style1.css">
+    <link rel="stylesheet" href="../styles/style2.css">
+    <link rel="stylesheet" href="../styles/style3.css">
+    <link rel="stylesheet" href="../styles/index.css">
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
+        data-auto-replace-svg="nest"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+</head>
+
+<body>
+    <div>
+
+        <!-- header -->
+        <div class="Mainheader" id="navbar">
+            <h2>STEALTH</h2>
+            <form action="/search" method="post" class="searchBar">
+                <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                <input name="searchName" type="text" class="search-box" placeholder="search" required />
+            </form>
+        </div>
+
+        <!-- mainsection -->
+
+        <!-- left -->
+        <div class="mainsection">
+            <div class="profileinfo">
+                <div class="profile-comp" id="profile-info-basic">
+                    <img src="../images/dummy.jpg" alt="postimage" class="profile-pic" />
+                    <p>
+                        <%= username %>
+                    </p>
+                </div>
+                <div class="endorsements" id="endorsement-section">
+                    <h3>
+                        <i class="fa-solid fa-thumbs-up"></i>&nbsp;<%=totallikes%>
+                    </h3>
+                    <h3>
+                        <i class="fa-solid fa-award"></i> &nbsp;<%=totalawards%>
+                    </h3>
+                </div>
+
+                <div class="bio" id="bio-section">
+                    <p><%= bio %></p>
+                </div>
+            </div>
+
+            <!-- main posts -->
+            <div class="content">
+                <% posts.forEach((post)=> { %>
+                    <div class="caption" id="post-box">
+                        <div class="topLine">
+                            <img src="../images/dummy.jpg" alt="postimage" class="avatar" />
+
+                            <div class="details">
+                                <p>
+                                    <%=post.UploaderName%>
+                                </p>
+                                <h4>
+                                    <%=post.Caption%>
+                                </h4>
+                            </div>
+
+                        </div>
+                        <img src="../<%=post.ImageUrl%>" alt="postimage" class="postimage" />
+
+
+                        <div class="action-btn">
+                            <button class="react-btn-like" onclick="handleAction('<%= post._id %>', 'like')"><i
+                                    class="fa-solid fa-thumbs-up"></i></button>
+                            <p id="likesCount_<%= post._id %>">
+                                <%= post.Likes %>
+                            </p>
+
+                            <button class="react-btn-dislike" onclick="handleAction('<%= post._id %>', 'dislike')"><i
+                                    class="fa-solid fa-thumbs-down"></i></button>
+                            <p id="dislikesCount_<%= post._id %>">
+                                <%= post.Dislikes %>
+                            </p>
+
+                            <button class="react-btn-award" onclick="handleAction('<%= post._id %>', 'award')"><i
+                                    class="fa-solid fa-award"></i></button>
+                            <p id="awardsCount_<%= post._id %>">
+                                <%= post.Awards %>
+                            </p>
+                        </div>
+                    </div>
+                    <% }) %>
+            </div>
+
+            <!-- right -->
+            <div class="misclaneous">
+
+                <!-- new post -->
+                <div class="new-post" id="new-post">
+                    <form action="/createPost" method="post" class="post-form" id="new-post-form"
+                        enctype="multipart/form-data">
+                        <input type="text" placeholder="Enter caption" id="cap-input" name="caption" required />
+                        <div class="align-btn">
+                            <input type="file" id="avatar" name="image" accept="image/png, image/jpeg" required />
+
+                            <button type="submit"><i class="fa-solid fa-check"></i> Create </button>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="feature-buttons" id="feature-btns">
+                    <form action="/profile" method="get">
+                        <button class="general-btn"><i class="fa-solid fa-user"></i></button>
+                    </form>
+                    <form action="/Update" method="get">
+                        <button class="general-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+                    </form>
+                    
+                    <button class="general-btn"><i class="fa-brands fa-github"></i></button>
+
+                    <form action="/logout" method="get">
+                        <button class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i></button>
+                    </form>
+                </div>
+
+                <div class="Footer-section" id="footer-sec">
+                    <p>copyright ©️ <%= year %> STEALTH</p>
+                    <p>App Created by Soumyadeep</p>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+
+<script>
+    // Function to handle the action button click
+    function handleAction(postId, action) {
+        $.ajax({
+            method: 'POST',
+            url: '/performAction',
+            data: { postId, action },
+            success: function (response) {
+                // Update the counts displayed on the page
+                $('#likesCount_' + postId).text(response.likes);
+                $('#dislikesCount_' + postId).text(response.dislikes);
+                $('#awardsCount_' + postId).text(response.awards);
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
+    }
+
+</script>
+
+</html>
