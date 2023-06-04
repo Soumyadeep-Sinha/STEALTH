@@ -1,0 +1,93 @@
+@import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+
+html,
+body {
+    margin: 0;
+    background-color: #000000;
+    background-image: url("../images/background.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+
+.main {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.main p {
+    font-family: 'Bruno Ace SC', cursive;
+    font-size: 8rem;
+    margin: 30px 0;
+    color: #ffffff;
+    animation: flicker 0.4s linear 5s;
+    text-shadow: 0 0 40px #00ffd5;
+    animation-fill-mode: forwards;
+}
+
+@keyframes flicker {
+    0% {
+        text-shadow: none;
+    }
+
+    20% {
+        text-shadow: 0 0 40px #00ffd5;
+    }
+
+    40% {
+        text-shadow: none;
+    }
+
+    60% {
+        text-shadow: 0 0 40px #00ffd5;
+    }
+    
+    80% {
+        text-shadow: none;
+    }
+
+    100% {
+        text-shadow: 0 0 40px #00ffd5;
+    }
+}
+
+.main h1 {
+    font-family: 'Bruno Ace SC', cursive;
+    margin: 10px 0;
+    color: #f1f1f1;
+}
+
+.redirect-btns {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.redirect-btns button {
+    background-color: black;
+    color: aliceblue;
+    padding: 10px 20px;
+    font-size: 24px;
+    margin: 20px;
+    border-radius: 50px;
+    border: 3px solid #565656;
+}
+
+.redirect-btns button:hover {
+    background-color: #00332d;
+    color: white;
+    border: 3px solid #00ffea;
+    box-shadow: 0px 0px 5px 0px #00ffea;
+}
+
+footer h4 {
+    margin-top: 3rem;
+    font-family: Arial, Helvetica, sans-serif;
+    color: aliceblue;
+}

@@ -55,7 +55,9 @@
                 </div>
 
                 <div class="bio" id="bio-section">
-                    <p><%= bio %></p>
+                    <p>
+                        <%= bio %>
+                    </p>
                 </div>
             </div>
 
@@ -111,7 +113,7 @@
                         enctype="multipart/form-data">
                         <input type="text" placeholder="Enter caption" id="cap-input" name="caption" required />
                         <div class="align-btn">
-                            <input type="file" id="avatar" name="image" accept="image/png, image/jpeg" required />
+                            <input type="file" id="avatar" name="image" accept="image/png, image/jpeg, image/gif" required />
 
                             <button type="submit"><i class="fa-solid fa-check"></i> Create </button>
                         </div>
@@ -125,8 +127,9 @@
                     <form action="/Update" method="get">
                         <button class="general-btn"><i class="fa-solid fa-pen-to-square"></i></button>
                     </form>
-                    
-                    <button class="general-btn"><i class="fa-brands fa-github"></i></button>
+
+                    <a href="https://github.com/Soumyadeep-Sinha/STEALTH" target="_blank"><button class="general-btn"><i class="fa-brands fa-github"></i></button>
+                    </a>
 
                     <form action="/logout" method="get">
                         <button class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i></button>
