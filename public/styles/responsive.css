@@ -1,0 +1,200 @@
+.more-options{
+    display: none;
+    background-color: greenyellow;
+    padding: 5px 10px;
+    border-radius: 20px;
+    border: 0px;
+    margin-bottom: 1rem;
+}
+
+#close-btn{
+    display: none;
+}
+
+.profile-content{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+@media screen and (max-width: 1200px){
+    .auth-page{
+        flex-direction: column-reverse;
+    }
+    .auth-left-side img{
+        display: none;
+    }
+    #register-welcome{
+        font-size: 2rem;
+    }
+    footer {
+        margin-top: 5rem;
+    }
+    .main p{
+        font-size: 5rem;
+    }
+    .profileinfo{
+        display: none;
+    }
+    .misclaneous{
+        width: 30%;
+    }
+    .profile-mainsection{
+        flex-direction: column;
+    }
+    .profile-section{
+        flex-direction: row;
+        width: 90%;
+    }
+    .profile-image img{
+        height: 200px;
+        width: 200px;
+    }
+
+    #profile-content{
+        width: 90%;
+    }
+
+    .profile-name{
+        margin: 0 20px;
+    }
+
+    .bio-text{
+        width: 200px;
+        margin: 20px;
+    }
+    .copyright-text{
+        display: none;
+    }
+    .profile-mainsection-update{
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    .update-profile-area{
+        margin-top: 20px;
+    }
+    .update-profile-area h1{
+        text-align: center;
+    }
+}
+
+@media screen and (max-width: 1000px){
+    .mainsection{
+        flex-direction: column-reverse;
+        justify-content: center;
+        align-items: center;
+    }
+    .misclaneous{
+        width: 80%;
+    }
+    .content{
+        width: 100%;
+    }
+    .Footer-section{
+        display: none;
+    }
+    .update-profile-area{
+        margin-top: 20px;
+        width: 80%;
+    }
+    .update-profile-area h1{
+        text-align: center;
+    }
+
+    #wrapper h1{
+        font-size: 5rem;
+    }
+}
+
+@media screen and (max-width: 600px){
+    body{
+        padding: 0;
+    }
+    .more-options{
+        display: block;
+    }
+    .main p{
+        font-size: 3rem;
+    }
+
+    .main h1{
+        font-size: 1.5rem;
+    }
+
+    .redirect-btns button{
+        margin: 10px;
+        font-size: 1rem;
+    }
+
+    .main footer{
+        font-size: 0.5rem;
+    }
+    .misclaneous{
+        width: 70%;
+        display: none;
+    }
+    .feature-buttons{
+        margin: 10px 20px;
+    }
+    .content{
+        width: 90%;
+    }
+    .caption{
+        width: 90%;
+    }
+
+    .Mainheader{
+        flex-direction: column;
+        width: 100%;
+        padding: 20px 10px;
+        border-radius: 0;
+        top: 0;
+        position: relative;
+    }
+    .Mainheader h2{
+        margin: 5px 0;
+        padding: 0;
+    }
+
+    .searchBar{
+        padding: 0;
+    }
+
+    .profile-image{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .profile-image img{
+        height: 200px;
+        width: 200px;
+    }
+    .profile-section{
+        display: none;
+        flex-direction: column;
+        width: 90%;
+        align-items: center;
+    }
+    .update-profile-area{
+        margin-top: 20px;
+        width: 90%;
+    }
+
+    #wrapper{
+        text-align: center;
+        padding: 20px;
+    }
+
+    #wrapper h1{
+        font-size: 4rem;
+    }
+    #wrapper h3{
+        font-size: 3rem;
+    }
+    #wrapper h4{
+        font-size: 2rem;
+    }
+}

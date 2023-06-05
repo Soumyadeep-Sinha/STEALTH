@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="../styles/index.css">
     <link rel="stylesheet" href="../styles/style3.css">
     <link rel="stylesheet" href="../styles/profile-update.css">
+    <link rel="stylesheet" href="../styles/responsive.css">
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
         data-auto-replace-svg="nest"></script>
@@ -27,29 +28,46 @@
         </form>
     </div>
     <style>
-        .del-pro-btn button{
+        .del-pro-btn button {
             background-color: red;
         }
 
-        .del-pro-btn button:hover{
+        .del-pro-btn button:hover {
             background-color: #750000;
         }
     </style>
 
     <div class="profile-mainsection-update">
-        <div class="profile-section">
+
+        <button class="more-options" id="show-btn" onclick="showmore()">View Profile</button>
+        <button class="more-options" id="close-btn" onclick="collapse()">Hide</button>
+
+        <div class="profile-section" id="misc-section">
             <div class="profile-image">
                 <img src="../images/dummy.jpg" alt="">
             </div>
-            <h2 class="profile-name"><%=username%></h2>
-            <h2 class="general-info"><i class="fa-solid fa-thumbs-up"></i> <%=totalLikes%></h2>
-            <h2 class="general-info"><i class="fa-solid fa-award"></i> <%=totalAwards%></h2>
-            <h3 class="bio-text"><%=Bio%></h3>
+            <div class="profile-content">
+                <h2 class="profile-name">
+                    <%=username%>
+                </h2>
+                <div class="handle-endoresements">
+                    <h2 class="general-info"><i class="fa-solid fa-thumbs-up"></i>
+                        <%=totalLikes%>
+                    </h2>
+                    <h2 class="general-info"><i class="fa-solid fa-award"></i>
+                        <%=totalAwards%>
+                    </h2>
+                </div>
+                <h3 class="bio-text">
+                    <%=Bio%>
+                </h3>
 
-            <form action="/deleteUser" class="del-pro-btn">
-                <button type="button" id="del-btn" onclick="confdel()">Delete Profile</button>
-                <button id="conf-button" type="submit">Click again to confirm delete. All data will be lost. This cannot be undone!</button>
-            </form>
+                <form action="/deleteUser" class="del-pro-btn">
+                    <button type="button" id="del-btn" onclick="confdel()">Delete Profile</button>
+                    <button id="conf-button" type="submit">Press again to confirm delete. All data will be lost. This
+                        cannot be undone!</button>
+                </form>
+            </div>
 
             <p style="color:white;">Copyright 2023, STEALTH</p>
         </div>
@@ -69,7 +87,9 @@
                 <label for="new-password">New password</label>
                 <input type="password" id="new-password" name="newpwd" placeholder="Enter New password (optional)">
 
-                <p><%=error%></p>
+                <p>
+                    <%=error%>
+                </p>
 
                 <button class="update-btn">Update Profile</button>
             </form>
@@ -81,6 +101,16 @@
     function confdel() {
         document.getElementById("conf-button").style.display = "block";
         document.getElementById("del-btn").style.display = "none";
+    }
+    const showmore = () => {
+        document.getElementById("misc-section").style.display = "block";
+        document.getElementById("close-btn").style.display = "block";
+        document.getElementById("show-btn").style.display = "none";
+    }
+    const collapse = () => {
+        document.getElementById("misc-section").style.display = "none";
+        document.getElementById("close-btn").style.display = "none";
+        document.getElementById("show-btn").style.display = "block";
     }
 </script>
 
