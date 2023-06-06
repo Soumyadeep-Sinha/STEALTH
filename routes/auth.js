@@ -8,10 +8,16 @@ router.get("/", (req,res)=> {
 })
 
 router.get("/login", (req, res) => {
+    if(req.session._id){
+        res.redirect("/home");
+    }
     res.render("login", { error: "", username: "" })
 })
 
 router.get("/register", (req, res) => {
+    if(req.session._id){
+        res.redirect("/home");
+    }
     res.render("signup", { error: "", username: "" })
 })
 

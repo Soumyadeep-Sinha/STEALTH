@@ -8,6 +8,7 @@
     align-items: center;
     padding: 10px;
     border-radius: 20px;
+    text-align: center;
 }
 
 .Footer-section p{
@@ -15,12 +16,13 @@
     margin: 5px 0;
 }
 
-.preview img{
+.preview-img{
     width: 250px;
     height: 200px;
     border-radius: 20px;
     border: 2px solid rgb(135, 135, 135);
     background-color: white;
+    visibility: hidden;
 }
 
 .searchBar {

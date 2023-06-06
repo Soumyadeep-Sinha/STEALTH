@@ -4,13 +4,17 @@ const mongoose = require("mongoose");
 const session = require('express-session');
 const geoip = require('geoip-lite');
 require("dotenv").config();
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
+//------------- Copyright ------------------ Soumyadeep Sinha ---------------- Node Js----------------
 
 const port = 3000;
 
 const app = express();
 
 app.use(session({
-    secret: 'your-secret-key',
+    secret: '##123#123##',
     resave: false,
     saveUninitialized: true
 }));
@@ -27,9 +31,10 @@ const uri = process.env.CONNECTOR;
 // CONNECTION
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("successfully connected to your MongoDB database."))
-    .catch((error) => { 
+    .catch((error) => {
         console.log(error)
-        res.render("errorPage", {code:"503", message: "SERVICE UNAVAILABLE"}); })
+        res.render("errorPage", { code: "503", message: "SERVICE UNAVAILABLE" });
+    })
 
 
 const authRoute = require("./routes/auth");
@@ -40,42 +45,44 @@ app.use(authRoute);
 app.use(homeroute);
 app.use(updateroute);
 
-// const userdata = new mongoose.Schema({
-//     UserName: { type: String, required: true },
-//     Password: { type: String, required: true },
-//     Bio: { type: String, default: "THIS IS A SAMPLE BIO YOU CAN UPDATE IT." },
-//     TotalLikes: { type: Number, default: 0 },
-//     TotalAwards: { type: Number, default: 0 }
-// });
-
-// const userinputs = new mongoose.model("userDatas", userdata);
-
+// calling user schema
 const User = require("./routes/userSchema")
 
 // AUTHORIZATION
 app.post("/register", async (req, res) => {
-    const maindata = new User({
-        UserName: req.body.username,
-        Password: req.body.password,
-        Bio: "THIS IS A SAMPLE BIO YOU CAN UPDATE IT.",
-        TotalLikes: 0,
-        TotalAwards: 0
-    });
 
+    const userName = req.body.username;
+    const password = req.body.password;
+    const confPassword = req.body.confpassword;
+    
     const username = req.session.req.body.username;
-
-    if (req.body.password === req.body.confpassword) {
-        await maindata.save()
-            .then(() => {
-                console.log("User data saved successfully");
-                res.render("login", { error: "", username: username })
-            })
-            .catch(error => {
-                var error_name = "User already registered";
-                console.log(error_name);
-                console.log(error);
-                res.render("signup", { error: "User already registered", username: username })
+    
+    if (password === confPassword) {
+        try {
+            const hashedPassword = await bcrypt.hash(password, saltRounds);
+            const maindata = new User({
+                UserName: userName,
+                Password: hashedPassword,
+                Bio: "THIS IS A SAMPLE BIO YOU CAN UPDATE IT.",
+                TotalLikes: 0,
+                TotalAwards: 0
             });
+
+            await maindata.save()
+                .then(() => {
+                    console.log("User data saved successfully");
+                    res.render("login", { error: "", username: username })
+                })
+                .catch(error => {
+                    var error_name = "User already registered";
+                    console.log(error_name);
+                    console.log(error);
+                    res.render("signup", { error: "User already registered", username: username })
+                });
+        } catch (error) {
+            console.log(error);
+            res.render("errorPage", { code: "504", message: "GATEWAY TIMEOUT" });
+        }
     } else {
         console.log("password did not match")
         res.render("signup", { error: "Passwords don't match!", username: username })
@@ -89,9 +96,14 @@ app.post("/login", async (req, res) => {
         let password = req.body.password;
 
         const search = await User.findOne({ UserName: username });
-        let retrevedpwd = search.Password;
 
-        if (retrevedpwd === password) {
+        const hashedPassword = search.Password;
+        const isMatch = await bcrypt.compare(password, hashedPassword);
+        if(!isMatch){
+            res.render("errorPage", { code: "504", message: "GATEWAY TIMEOUT" });
+        }
+
+        if (isMatch) {
             req.session.username = username;
             req.session._id = search._id;
             req.session.bio = search.Bio;
@@ -156,7 +168,7 @@ app.post("/createPost", upload.single('image'), async (req, res) => {
         }).catch((err) => {
             console.log('Error saving post:', err);
             res.status(500);
-            res.render("errorPage", {code:"500", message: "INTERNAL SERVER ERROR"});
+            res.render("errorPage", { code: "500", message: "INTERNAL SERVER ERROR" });
         });
 })
 

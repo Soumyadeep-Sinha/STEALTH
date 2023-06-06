@@ -110,6 +110,7 @@
 .align-btn button{
     padding: 10px 10px;
     width: auto;
+    margin: 5px 0;
 }
 .delete-btn{
     display: flex;
@@ -139,14 +140,14 @@
     margin-top: 20px;
     padding: 5px;
     display: flex;
-    justify-content: space-evenly;
+    justify-content: center;
     align-items: center;
     border-radius: 20px;
     flex-wrap: wrap;
 }
 
 .feature-buttons button{
-    margin: 10px 0;
+    margin: 10px;
     padding: 10px 20px;
     border-radius: 20px;
     font-size: 20px;

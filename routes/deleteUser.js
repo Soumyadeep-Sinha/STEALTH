@@ -7,7 +7,7 @@ router.get("/deleteUser", async (req, res) => {
     await User.findByIdAndRemove(req.session._id)
         .then(() => {
             console.log("user deleted");
-            res.redirect("/");
+            res.redirect("/logout");
         })
         .catch((err) => {
             console.log("cannot delete user", err);

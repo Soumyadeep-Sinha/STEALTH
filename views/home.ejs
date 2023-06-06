@@ -117,11 +117,14 @@
                         enctype="multipart/form-data">
                         <input type="text" placeholder="Enter caption" id="cap-input" name="caption" required />
                         <div class="align-btn">
-                            <input type="file" id="avatar" name="image" accept="image/png, image/jpeg, image/gif" required />
-
+                            <input type="file" id="avatar" name="image" accept="image/png, image/jpeg, image/gif"
+                                required />
                             <button type="submit"><i class="fa-solid fa-check"></i> Create </button>
                         </div>
                     </form>
+                    <div class="preview">
+                        <img class="preview-img" id="previewImage" alt="preview" />
+                    </div>
 
                 </div>
                 <div class="feature-buttons" id="feature-btns">
@@ -131,8 +134,22 @@
                     <form action="/Update" method="get">
                         <button class="general-btn"><i class="fa-solid fa-pen-to-square"></i></button>
                     </form>
+                    <form action="/home" method="get">
+                        <button class="general-btn"><i class="fa-solid fa-house"></i></button>
+                    </form>
+                    <form action="/terms" method="">
+                        <button class="general-btn"><i class="fa-solid fa-file-lines"></i></button>
+                    </form>
+                    <form action="/" method="get">
+                        <button class="general-btn"><i class="fa-solid fa-user-ninja"></i></button>
+                    </form>
+                    <form action="/report" method="">
+                        <button class="general-btn"><i class="fa-solid fa-bug"></i></button>
+                    </form>
 
-                    <a href="https://github.com/Soumyadeep-Sinha/STEALTH" target="_blank"><button class="general-btn"><i class="fa-brands fa-github"></i></button>
+
+                    <a href="https://github.com/Soumyadeep-Sinha/STEALTH" target="_blank"><button class="general-btn"><i
+                                class="fa-brands fa-github"></i></button>
                     </a>
 
                     <form action="/logout" method="get">
@@ -172,16 +189,37 @@
     }
 
     // handle collapse
-    const showmore = ()=>{
+    const showmore = () => {
         document.getElementById("misc-section").style.display = "block";
         document.getElementById("close-btn").style.display = "block";
         document.getElementById("show-btn").style.display = "none";
     }
-    const collapse = ()=>{
+    const collapse = () => {
         document.getElementById("misc-section").style.display = "none";
         document.getElementById("close-btn").style.display = "none";
         document.getElementById("show-btn").style.display = "block";
     }
+
+    // preview image
+
+    function handleFileSelect(event) {
+        const file = event.target.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                document.getElementById('previewImage').style.visibility = "visible"
+                const previewImage = document.getElementById('previewImage');
+                previewImage.src = e.target.result;
+            };
+
+            reader.readAsDataURL(file);
+        }
+    }
+
+    const imageInput = document.getElementById('avatar');
+    imageInput.addEventListener('change', handleFileSelect);
 
 </script>
 

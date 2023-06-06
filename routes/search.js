@@ -2,8 +2,13 @@ const express = require("express");
 const Post = require("./newpostSchema");
 const User = require("./userSchema");
 const router = express.Router();
+const session = require("express-session");
+
 
 router.post("/search", async (req, res) => {
+    if(!req.session._id){
+        res.redirect("/login");
+    }
     const username = req.body.searchName;
     console.log(username);
     const search = await User.findOne({ UserName: username });
