@@ -2,9 +2,10 @@
     display: none;
     background-color: greenyellow;
     padding: 5px 10px;
-    border-radius: 20px;
+    border-radius: 0 20px 20px 0;
     border: 0px;
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
+    /* margin-left: 1rem; */
 }
 
 #close-btn{
@@ -109,7 +110,7 @@
 
 @media screen and (max-width: 600px){
     body{
-        padding: 0;
+        padding: 0 0 20px 0;
     }
     .more-options{
         display: block;
@@ -135,7 +136,10 @@
         display: none;
     }
     .feature-buttons{
-        margin: 10px 20px;
+        position: sticky;
+        bottom: 0;
+        margin-top: 10px;
+        border-radius: 0;
     }
     .content{
         width: 90%;
@@ -146,7 +150,6 @@
 
     .Mainheader{
         flex-direction: column;
-        width: 100%;
         padding: 20px 10px;
         border-radius: 0;
         top: 0;
@@ -175,7 +178,7 @@
     .profile-section{
         display: none;
         flex-direction: column;
-        width: 90%;
+        width: 80%;
         align-items: center;
     }
     .update-profile-area{
