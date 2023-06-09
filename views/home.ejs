@@ -31,7 +31,7 @@
             <h2>STEALTH</h2>
             <form action="/search" method="post" class="searchBar">
                 <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                <input name="searchName" type="text" class="search-box" placeholder="search" required />
+                <input name="searchName" type="text" class="search-box" placeholder="search someone" required />
             </form>
         </div>
         
@@ -41,7 +41,9 @@
         
         <!-- left -->
         <div class="mainsection">
+            
             <div class="profileinfo">
+
                 <div class="profile-comp" id="profile-info-basic">
                     <img src="../images/dummy.jpg" alt="postimage" class="profile-pic" />
                     <p>
@@ -62,6 +64,7 @@
                         <%= bio %>
                     </p>
                 </div>
+
             </div>
 
             <!-- main posts -->
@@ -110,6 +113,10 @@
             <!-- right -->
 
             <div class="misclaneous" id="misc-section">
+                <form action="/searchPost" method="post" class="searchPostBar">
+                    <input name="searchPost" type="text" class="search-post-box" placeholder="search posts" required />
+                    <button class="search-post-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+                </form>
 
                 <!-- new post -->
                 <div class="new-post" id="new-post">
@@ -125,9 +132,11 @@
                     <div class="preview">
                         <img class="preview-img" id="previewImage" alt="preview" />
                     </div>
-
                 </div>
+
+
                 <div class="feature-buttons" id="feature-btns">
+                    
                     <form action="/profile" method="get">
                         <button class="general-btn"><i class="fa-solid fa-user"></i></button>
                     </form>
@@ -157,6 +166,7 @@
                     </form>
                 </div>
 
+
                 <div class="Footer-section" id="footer-sec">
                     <p>copyright ©️ <%= year %> STEALTH</p>
                     <p>App Created by Soumyadeep</p>
@@ -170,6 +180,19 @@
 </body>
 
 <script>
+    
+    // handle collapse
+    const showmore = () => {
+        document.getElementById("misc-section").style.display = "block";
+        document.getElementById("close-btn").style.display = "block";
+        document.getElementById("show-btn").style.display = "none";
+    }
+    const collapse = () => {
+        document.getElementById("misc-section").style.display = "none";
+        document.getElementById("close-btn").style.display = "none";
+        document.getElementById("show-btn").style.display = "block";
+    }
+    
     // Function to handle the action button click
     function handleAction(postId, action) {
         $.ajax({
@@ -187,19 +210,6 @@
             }
         });
     }
-
-    // handle collapse
-    const showmore = () => {
-        document.getElementById("misc-section").style.display = "block";
-        document.getElementById("close-btn").style.display = "block";
-        document.getElementById("show-btn").style.display = "none";
-    }
-    const collapse = () => {
-        document.getElementById("misc-section").style.display = "none";
-        document.getElementById("close-btn").style.display = "none";
-        document.getElementById("show-btn").style.display = "block";
-    }
-
     // preview image
 
     function handleFileSelect(event) {

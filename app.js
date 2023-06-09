@@ -2,6 +2,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const session = require('express-session');
+const MongoDBStore = require('connect-mongodb-session')(session);
 const geoip = require('geoip-lite');
 require("dotenv").config();
 const bcrypt = require('bcrypt');
@@ -13,22 +14,9 @@ const port = 3000;
 
 const app = express();
 
-app.use(session({
-    secret: '##123#123##',
-    resave: false,
-    saveUninitialized: true
-}));
-
-// initializer
-app.use(bodyParser.json({ limit: '25mb', extended: true }));
-app.use(bodyParser.urlencoded({ limit: '25mb', extended: true }));
-app.set('view engine', 'ejs');
-app.use(express.static('public'));
-
+// CONNECTION
 const locale = "mongodb://localhost:27017/stealthDB";
 const uri = process.env.CONNECTOR;
-
-// CONNECTION
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     .then(() => console.log("successfully connected to your MongoDB database."))
     .catch((error) => {
@@ -36,6 +24,24 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
         res.render("errorPage", { code: "503", message: "SERVICE UNAVAILABLE" });
     })
 
+
+const store = new MongoDBStore({
+    mongooseConnection: mongoose.connection,
+    collection: 'sessions'
+});
+
+app.use(session({
+    secret: '##123#123##',
+    resave: false,
+    saveUninitialized: true,
+    store: store
+}));
+
+// initializer
+app.use(bodyParser.json({ limit: '25mb', extended: true }));
+app.use(bodyParser.urlencoded({ limit: '25mb', extended: true }));
+app.set('view engine', 'ejs');
+app.use(express.static('public'));
 
 const authRoute = require("./routes/auth");
 const homeroute = require("./routes/home");
@@ -54,9 +60,9 @@ app.post("/register", async (req, res) => {
     const userName = req.body.username;
     const password = req.body.password;
     const confPassword = req.body.confpassword;
-    
+
     const username = req.session.req.body.username;
-    
+
     if (password === confPassword) {
         try {
             const hashedPassword = await bcrypt.hash(password, saltRounds);
@@ -99,9 +105,6 @@ app.post("/login", async (req, res) => {
 
         const hashedPassword = search.Password;
         const isMatch = await bcrypt.compare(password, hashedPassword);
-        if(!isMatch){
-            res.render("errorPage", { code: "504", message: "GATEWAY TIMEOUT" });
-        }
 
         if (isMatch) {
             req.session.username = username;

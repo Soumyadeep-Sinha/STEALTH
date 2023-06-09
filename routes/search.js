@@ -6,14 +6,14 @@ const session = require("express-session");
 
 
 router.post("/search", async (req, res) => {
-    if(!req.session._id){
+    if (!req.session._id) {
         res.redirect("/login");
     }
     const username = req.body.searchName;
-    console.log(username);
+    // console.log(username);
     const search = await User.findOne({ UserName: username });
     if (!search) {
-        res.render("errorPage", {code:"404", message:"NOT FOUND"})
+        res.render("errorPage", { code: "404", message: "NOT FOUND" })
     } else {
         const id = search._id;
 
@@ -46,6 +46,32 @@ router.post("/search", async (req, res) => {
     }
 
 })
+
+
+router.post("/searchPost", async (req, res) => {
+    if (!req.session._id) {
+        res.redirect("/login");
+    }
+
+    const searchString = req.body.searchPost;
+    // console.log(searchString);
+
+    let year = new Date().getFullYear();
+
+    await Post.find({ Caption: { $regex: searchString, $options: "i" } })
+        .sort({ CreatedAt: -1 })
+        .then(posts => {
+            posts.forEach(post => {
+                post.ImageUrl = post.ImageUrl.replace(/\\/g, '/');
+                post.ImageUrl = post.ImageUrl.replace(/public\//, '');
+            });
+            res.render("postSearch",{posts});
+        })
+        .catch(err => {
+            console.log(err);
+        });
+});
+
 
 
 module.exports = router;

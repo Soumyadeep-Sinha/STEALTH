@@ -55,6 +55,50 @@
     color: white;
 }
 
+.searchPostBar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1rem 0;
+}
+
+.searchPostBar input:focus{
+    background-color:rgb(39, 31, 55);
+    outline: 0px solid #8c06d4;
+}
+
+.search-post-btn{
+    padding: 8px 20px;
+    border-radius: 0 20px 20px 0;
+    border: 0px;
+    background-color: rgb(149, 22, 0);
+    transition: 0.5s;
+    color: azure;
+}
+
+.search-post-btn:hover{
+    background-color: rgb(126, 0, 0);
+    transition: 0.5s;
+}
+
+.search-post-box{
+    padding: 8px 20px;
+    border-radius: 20px 0 0 20px;
+    border: 0px;
+    background-color: #3b3b3b;
+    color: white;
+}
+
+
+
+
+
+
+
+
+
+
+
 .react-btn-like{
     color: white;
 }

@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>
-        <%=username%> Profile
+        search post
     </title>
     <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
 
@@ -32,35 +32,13 @@
             <input name="searchName" type="text" class="search-box" placeholder="search someone" required />
         </form>
     </div>
-    <button class="more-options" id="show-btn" onclick="showmore()">View Profile</button>
-    <button class="more-options" id="close-btn" onclick="collapse()">Hide</button>
+
+    <form action="/searchPost" method="post" class="searchPostBar">
+        <input name="searchPost" type="text" class="search-post-box" placeholder="search posts" required />
+        <button class="search-post-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+    </form>
 
     <div class="profile-mainsection">
-
-
-        <div class="profile-section" id="misc-section">
-            <div class="profile-image">
-                <img src="../images/dummy.jpg" alt="">
-            </div>
-            <div class="profile-content">
-                <h2 class="profile-name">
-                    <%=username%>
-                </h2>
-                <div class="handle-endoresements">
-                    <h2 class="general-info"><i class="fa-solid fa-thumbs-up"></i>
-                        <%=totalLikes%>
-                    </h2>
-                    <h2 class="general-info"><i class="fa-solid fa-award"></i>
-                        <%=totalAwards%>
-                    </h2>
-                </div>
-                <h3 class="bio-text">
-                    <%=Bio%>
-                </h3>
-            </div>
-
-            <p style="color:white;">Copyright <%=year%>, STEALTH</p>
-        </div>
 
         <div class="content" id="profile-content">
             <% posts.forEach((post)=> { %>
@@ -69,6 +47,9 @@
                         <img src="../images/dummy.jpg" alt="postimage" class="avatar" />
 
                         <div class="details">
+                            <p>
+                                <%=post.UploaderName%>
+                            </p>
                             <h4>
                                 <%=post.Caption%>
                             </h4>

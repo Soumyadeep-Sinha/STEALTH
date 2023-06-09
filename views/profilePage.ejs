@@ -19,6 +19,8 @@
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
         data-auto-replace-svg="nest"></script>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
@@ -27,7 +29,7 @@
         <h2>STEALTH</h2>
         <form action="/search" method="post" class="searchBar">
             <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-            <input name="searchName" type="text" class="search-box" placeholder="search" required />
+            <input name="searchName" type="text" class="search-box" placeholder="search someone" required />
         </form>
     </div>
 
@@ -137,6 +139,24 @@
         document.getElementById("misc-section").style.display = "none";
         document.getElementById("close-btn").style.display = "none";
         document.getElementById("show-btn").style.display = "block";
+    }
+
+    // Function to handle the action button click
+    function handleAction(postId, action) {
+        $.ajax({
+            method: 'POST',
+            url: '/performAction',
+            data: { postId, action },
+            success: function (response) {
+                // Update the counts displayed on the page
+                $('#likesCount_' + postId).text(response.likes);
+                $('#dislikesCount_' + postId).text(response.dislikes);
+                $('#awardsCount_' + postId).text(response.awards);
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
+            }
+        });
     }
 
 </script>
