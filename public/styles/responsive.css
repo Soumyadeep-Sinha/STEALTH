@@ -1,4 +1,4 @@
-.more-options{
+.more-options {
     display: none;
     background-color: greenyellow;
     padding: 5px 10px;
@@ -8,196 +8,244 @@
     /* margin-left: 1rem; */
 }
 
-#close-btn{
+#close-btn {
     display: none;
 }
 
-.profile-content{
+.profile-content {
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-@media screen and (max-width: 1200px){
-    .auth-page{
+@media screen and (max-width: 2500px) {
+    .comments {
+        width: 50%;
+        height: 70%;
+    }
+}
+@media screen and (max-width: 1200px) {
+    .comments {
+        width: 70%;
+        height: 70%;
+    }
+
+    .auth-page {
         flex-direction: column-reverse;
     }
-    .auth-left-side img{
+
+    .auth-left-side img {
         display: none;
     }
-    #register-welcome{
+
+    #register-welcome {
         font-size: 2rem;
     }
+
     footer {
         margin-top: 5rem;
     }
-    .main p{
+
+    .main p {
         font-size: 5rem;
     }
-    .profileinfo{
+
+    .profileinfo {
         display: none;
     }
-    .misclaneous{
+
+    .misclaneous {
         width: 30%;
     }
-    .profile-mainsection{
+
+    .profile-mainsection {
         flex-direction: column;
     }
-    .profile-section{
+
+    .profile-section {
         flex-direction: row;
         width: 90%;
     }
-    .profile-image img{
+
+    .profile-image img {
         height: 200px;
         width: 200px;
     }
 
-    #profile-content{
+    #profile-content {
         width: 90%;
     }
 
-    .profile-name{
+    .profile-name {
         margin: 0 20px;
     }
 
-    .bio-text{
+    .bio-text {
         width: 200px;
         margin: 20px;
     }
-    .copyright-text{
+
+    .copyright-text {
         display: none;
     }
-    .profile-mainsection-update{
+
+    .profile-mainsection-update {
         flex-direction: column;
         justify-content: center;
         align-items: center;
     }
-    .update-profile-area{
+
+    .update-profile-area {
         margin-top: 20px;
     }
-    .update-profile-area h1{
+
+    .update-profile-area h1 {
         text-align: center;
     }
 }
 
-@media screen and (max-width: 1000px){
-    .mainsection{
+@media screen and (max-width: 1000px) {
+    .comments {
+        width: 90%;
+        height: 70%;
+    }
+    .mainsection {
         flex-direction: column-reverse;
         justify-content: center;
         align-items: center;
     }
-    .misclaneous{
+
+    .misclaneous {
         width: 80%;
     }
-    .content{
+
+    .content {
         width: 100%;
     }
-    .Footer-section{
+
+    .Footer-section {
         display: none;
     }
-    .update-profile-area{
+
+    .update-profile-area {
         margin-top: 20px;
         width: 80%;
     }
-    .update-profile-area h1{
+
+    .update-profile-area h1 {
         text-align: center;
     }
 
-    #wrapper h1{
+    #wrapper h1 {
         font-size: 5rem;
     }
 }
 
-@media screen and (max-width: 600px){
-    body{
+@media screen and (max-width: 600px) {
+    .comments {
+        width: 90%;
+        height: 70%;
+    }
+    body {
         padding: 0 0 20px 0;
     }
-    .more-options{
+
+    .more-options {
         display: block;
     }
-    .main p{
+
+    .main p {
         font-size: 3rem;
     }
 
-    .main h1{
+    .main h1 {
         font-size: 1.5rem;
     }
 
-    .redirect-btns button{
+    .redirect-btns button {
         margin: 10px;
         font-size: 1rem;
     }
 
-    .main footer{
+    .main footer {
         font-size: 0.5rem;
     }
-    .misclaneous{
+
+    .misclaneous {
         width: 70%;
         display: none;
     }
-    .feature-buttons{
+
+    .feature-buttons {
         position: sticky;
         bottom: 0;
         margin-top: 10px;
         border-radius: 0;
     }
-    .content{
-        width: 90%;
-    }
-    .caption{
+
+    .content {
         width: 90%;
     }
 
-    .Mainheader{
+    .caption {
+        width: 90%;
+    }
+
+    .Mainheader {
         flex-direction: column;
         padding: 20px 10px;
         border-radius: 0;
         top: 0;
         position: relative;
     }
-    .Mainheader h2{
+
+    .Mainheader h2 {
         margin: 5px 0;
         padding: 0;
     }
 
-    .searchBar{
+    .searchBar {
         padding: 0;
     }
 
-    .profile-image{
+    .profile-image {
         display: flex;
         justify-content: center;
         align-items: center;
         margin-bottom: 20px;
     }
 
-    .profile-image img{
+    .profile-image img {
         height: 200px;
         width: 200px;
     }
-    .profile-section{
+
+    .profile-section {
         display: none;
         flex-direction: column;
         width: 80%;
         align-items: center;
     }
-    .update-profile-area{
+
+    .update-profile-area {
         margin-top: 20px;
         width: 90%;
     }
 
-    #wrapper{
+    #wrapper {
         text-align: center;
         padding: 20px;
     }
 
-    #wrapper h1{
+    #wrapper h1 {
         font-size: 4rem;
     }
-    #wrapper h3{
+
+    #wrapper h3 {
         font-size: 3rem;
     }
-    #wrapper h4{
+
+    #wrapper h4 {
         font-size: 2rem;
     }
 }

@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="../../public/styles/style3.css">
     <link rel="stylesheet" href="../../public/styles/index.css">
     <link rel="stylesheet" href="../../public/styles/responsive.css">
+    <link rel="stylesheet" href="../../public/styles/commentOverlay.css">
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
@@ -21,8 +22,22 @@
 
 
 <body>
-    <div>
+    <div class="comment-area" id="comment-section">
+        <div class="comments">
+            <h1>Comments</h1>
+            <form action="/handle messages" class="message-send">
+                <textarea name="comment" id="" rows="1" placeholder="Comment Something ..."></textarea>
+                <button type="submit" class="send-msg-btn"><i class="fa-solid fa-comment"></i></button>
+                <button type="button" class="cancel-button" onclick="closeComment()"><i class="fa-regular fa-circle-xmark"></i></button>
+            </form>
+            <div class="commentarea">
+                <p>this is a sample message. Lorem ipsum dolor, sit amet consectetur adipisicing elit. Doloribus libero, dolorem eaque ea sunt quod? Delectus tempora corporis ipsam voluptatem provident laboriosam. Corporis minima ut quibusdam ratione consequatur dolorum dolores voluptas voluptatem est eius.</p>
+            </div>
+            
+        </div>
+    </div>
 
+    <div>
         <!-- header -->
         <div class="Mainheader" id="navbar">
             <h2>STEALTH</h2>
@@ -77,6 +92,7 @@
                         <p>50</p>
                         <button class="react-btn-award"><i class="fa-solid fa-award"></i></button>
                         <p>10</p>
+                        <button class="react-btn-like" onclick="openComment()"><i class="fa-solid fa-comment-dots"></i></button>
                     </div>
                 </div>
             </div>
@@ -128,6 +144,13 @@
         document.getElementById("misc-section").style.display = "none";
         document.getElementById("close-btn").style.display = "none";
         document.getElementById("show-btn").style.display = "block";
+    }
+
+    const openComment = () =>{
+        document.getElementById("comment-section").style.visibility = "visible";
+    }
+    const closeComment = () =>{
+        document.getElementById("comment-section").style.visibility = "hidden";
     }
 </script>
 

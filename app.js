@@ -179,6 +179,10 @@ app.post("/createPost", upload.single('image'), async (req, res) => {
 const handlePost = require("./routes/handleLikes");
 app.use(handlePost);
 
+// handle comments
+const comments = require("./routes/sendComment");
+app.use(comments);
+
 // user profile
 const userProfile = require("./routes/pofileRoute");
 app.use(userProfile);

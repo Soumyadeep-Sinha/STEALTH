@@ -14,6 +14,7 @@ const postSchema = new mongoose.Schema({
     LikedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     DislikedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
     AwardedBy: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }],
+    Comments: [{ type: String }],
     IPAddress: {type:String},
     Location: {type:String},
 })
