@@ -114,32 +114,45 @@
                                 </form>
 
                             </div>
-                            <img src="../<%=post.ImageUrl%>" alt="postimage" class="postimage" />
-                            <!-- <img src="../public/images/day.jpg" alt="postimage" class="postimage" /> -->
+                            <% function getFileExtension(filePath) { return filePath.split('.').pop().toLowerCase(); }
+                                %>
 
-                            <div class="action-btn">
-                                <button class="react-btn-like" onclick="handleAction('<%= post._id %>', 'like')"><i
-                                        class="fa-solid fa-thumbs-up"></i></button>
-                                <p id="likesCount_<%= post._id %>">
-                                    <%= post.Likes %>
-                                </p>
+                                <% if (['mp4', 'avi' , 'mov' ].includes(getFileExtension(post.ImageUrl))) { %>
+                                    <video src="../<%= post.ImageUrl %>" poster="../images/vidPreview.jpg"
+                                        class="postimage" controls muted>
+                                        Your browser does not support the video tag.
+                                    </video>
+                                    <% } else { %>
+                                        <img src="../<%= post.ImageUrl %>" alt="postimage" class="postimage" />
+                                        <% } %>
 
-                                <button class="react-btn-dislike"
-                                    onclick="handleAction('<%= post._id %>', 'dislike')"><i
-                                        class="fa-solid fa-thumbs-down"></i></button>
-                                <p id="dislikesCount_<%= post._id %>">
-                                    <%= post.Dislikes %>
-                                </p>
 
-                                <button class="react-btn-award" onclick="handleAction('<%= post._id %>', 'award')"><i
-                                        class="fa-solid fa-award"></i></button>
-                                <p id="awardsCount_<%= post._id %>">
-                                    <%= post.Awards %>
-                                </p>
+                                            <div class="action-btn">
+                                                <button class="react-btn-like"
+                                                    onclick="handleAction('<%= post._id %>', 'like')"><i
+                                                        class="fa-solid fa-thumbs-up"></i></button>
+                                                <p id="likesCount_<%= post._id %>">
+                                                    <%= post.Likes %>
+                                                </p>
 
-                                <button class="react-btn-like" onclick="openComment('<%= post._id %>')"><i
-                                    class="fa-solid fa-comment-dots"></i></button>
-                            </div>
+                                                <button class="react-btn-dislike"
+                                                    onclick="handleAction('<%= post._id %>', 'dislike')"><i
+                                                        class="fa-solid fa-thumbs-down"></i></button>
+                                                <p id="dislikesCount_<%= post._id %>">
+                                                    <%= post.Dislikes %>
+                                                </p>
+
+                                                <button class="react-btn-award"
+                                                    onclick="handleAction('<%= post._id %>', 'award')"><i
+                                                        class="fa-solid fa-award"></i></button>
+                                                <p id="awardsCount_<%= post._id %>">
+                                                    <%= post.Awards %>
+                                                </p>
+
+                                                <button class="react-btn-like"
+                                                    onclick="openComment('<%= post._id %>')"><i
+                                                        class="fa-solid fa-comment-dots"></i></button>
+                                            </div>
                         </div>
                         <% }) %>
                 </div>

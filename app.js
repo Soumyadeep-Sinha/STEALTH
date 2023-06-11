@@ -6,7 +6,7 @@ const MongoDBStore = require('connect-mongodb-session')(session);
 const geoip = require('geoip-lite');
 require("dotenv").config();
 const bcrypt = require('bcrypt');
-const saltRounds = 16;
+const saltRounds = 14;
 
 //------------- Copyright ------------------ Soumyadeep Sinha ---------------- Node Js----------------
 

@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Bruno+Ace+SC&display=swap');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -11,7 +12,7 @@ body {
   background-color: #232931;
 }
 
-::-webkit-scrollbar{
+::-webkit-scrollbar {
   display: none;
 }
 
@@ -32,15 +33,16 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-.mainsection{
+
+.mainsection {
   display: flex;
   height: 100vh;
   justify-content: center;
 }
 
-.content{
+.content {
   height: 100%;
-  width:55%;
+  width: 55%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -51,7 +53,7 @@ code {
   display: none;
 }
 
-.Mainheader{
+.Mainheader {
   display: flex;
   color: silver;
   background-color: #101010;
@@ -64,14 +66,14 @@ code {
   position: relative;
 }
 
-.Mainheader h2{
+.Mainheader h2 {
   margin: 8px;
   font-size: 34px;
   padding-left: 30px;
   font-family: 'Bruno Ace SC', cursive;
 }
 
-.topLine{
+.topLine {
   display: flex;
   background-color: #2f2f2f;
   border-radius: 20px;
@@ -79,30 +81,30 @@ code {
   width: 100%;
 }
 
-.details{
+.details {
   width: 80%;
 }
 
-.details h4{
+.details h4 {
   font-size: 24px;
   color: azure;
   margin: 5px 0;
 }
 
-.details p{
+.details p {
   color: azure;
   text-align: left;
   margin: 2px;
 }
 
-.avatar{
+.avatar {
   width: 50px;
   height: 50px;
   border-radius: 50px;
   margin: 10px 20px;
 }
 
-.postimage{
+.postimage {
   width: 98%;
   height: 80%;
   border-radius: 20px;
@@ -110,7 +112,8 @@ code {
   border: 3px solid rgb(70, 70, 70);
 }
 
-.caption{
+
+.caption {
   width: 80%;
   padding: 15px;
   background-color: #1b1b1b;
@@ -122,21 +125,22 @@ code {
   margin: 20px 0;
 }
 
-.action-btn{
+.action-btn {
   width: 95%;
   display: flex;
   color: white;
-  padding:2px 10px;
+  padding: 2px 10px;
   border-radius: 20px;
   align-items: center;
   background-color: #2f2f2f;
 }
-.action-btn p{
+
+.action-btn p {
   font-size: 20px;
   font-weight: bold;
 }
 
-.action-btn button{
+.action-btn button {
   font-size: 24px;
   padding: 0;
   width: 30px;
