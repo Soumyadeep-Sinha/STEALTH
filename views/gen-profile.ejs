@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="../styles/style2.css">
     <link rel="stylesheet" href="../styles/style1.css">
     <link rel="stylesheet" href="../styles/responsive.css">
+    <link rel="stylesheet" href="../styles/commentOverlay.css">
     
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
         data-auto-replace-svg="nest"></script>
@@ -24,6 +25,35 @@
 </head>
 
 <body>
+    <% posts.forEach((post)=> { %>
+        <div class="comment-area" id="comment-section-<%= post._id %>">
+            <div class="comments">
+                <h1>Comments</h1>
+                <form action="/sendComment/<%= post._id %>" class="message-send" method="post">
+                    <textarea name="newComment" id="" rows="1" placeholder="Comment Something ..."></textarea>
+                    <button type="submit" class="send-msg-btn"><i class="fa-regular fa-comment-dots"></i></button>
+                    <button type="button" class="cancel-button" onclick="closeComment('<%= post._id %>')"><i
+                            class="fa-regular fa-circle-xmark"></i></button>
+                </form>
+                <% post.Comments.forEach((cmt)=> { %>
+                    <div class="commentarea">
+                        <p>
+                            <%= cmt %>
+                        </p>
+                    </div>
+                    <% }) %>
+            </div>
+            <script>
+                const openComment = (postId) => {
+                    document.getElementById("comment-section-" + postId).style.visibility = "visible";
+                }
+                const closeComment = (postId) => {
+                    document.getElementById("comment-section-" + postId).style.visibility = "hidden";
+                }
+            </script>
+        </div>
+        <% }) %>
+
     <!-- header -->
     <div class="Mainheader" id="navbar">
         <h2>STEALTH</h2>
@@ -96,6 +126,9 @@
                         <p id="awardsCount_<%= post._id %>">
                             <%= post.Awards %>
                         </p>
+
+                        <button class="react-btn-like" onclick="openComment('<%= post._id %>')"><i
+                            class="fa-solid fa-comment-dots"></i></button>
                     </div>
                 </div>
                 <% }) %>
