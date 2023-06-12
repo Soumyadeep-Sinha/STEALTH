@@ -120,7 +120,8 @@
                                 %>
 
                                 <% if (['mp4', 'avi' , 'mov' ].includes(getFileExtension(post.ImageUrl))) { %>
-                                    <video src="../<%= post.ImageUrl %>" poster="../images/vidPreview.jpg" class="postimage" controls muted>
+                                    <video src="../<%= post.ImageUrl %>" poster="../images/vidPreview.jpg"
+                                        class="postimage" controls muted>
                                         Your browser does not support the video tag.
                                     </video>
                                     <% } else { %>
@@ -173,13 +174,16 @@
                             enctype="multipart/form-data">
                             <input type="text" placeholder="Enter caption" id="cap-input" name="caption" required />
                             <div class="align-btn">
-                                <input type="file" id="avatar" name="image" accept="image/png, image/jpeg, image/gif, video/mp4, video/avi, video/mov"
+                                <input type="file" id="avatar" name="image"
+                                    accept="image/png, image/jpeg, image/gif, video/mp4, video/avi, video/mov"
                                     required />
                                 <button type="submit"><i class="fa-solid fa-check"></i> Create </button>
                             </div>
                         </form>
-                        <div class="preview">
-                            <img class="preview-img" id="previewImage" alt="preview" />
+
+                        <div id="preview-section" style="display:none;">
+                            <img id="previewImage" class="preview-img" style="display:none;" />
+                            <video id="previewVideo" class="preview-img" style="display:none;" controls autoplay muted></video>
                         </div>
                     </div>
 
@@ -266,19 +270,37 @@
 
         if (file) {
             const reader = new FileReader();
-
             reader.onload = function (e) {
-                document.getElementById('previewImage').style.visibility = "visible"
-                const previewImage = document.getElementById('previewImage');
-                previewImage.src = e.target.result;
+                if (file.type.startsWith('image/')) {
+                    showImagePreview(e.target.result);
+                } else if (file.type.startsWith('video/')) {
+                    showVideoPreview(e.target.result);
+                } else {
+                    console.log('Unsupported file type');
+                }
             };
-
             reader.readAsDataURL(file);
         }
     }
 
+    function showImagePreview(imageSrc) {
+        document.getElementById('previewImage').style.display = "block";
+        document.getElementById('preview-section').style.display = "block";
+        document.getElementById('previewVideo').style.display = "none";
+        document.getElementById('previewImage').src = imageSrc;
+    }
+
+    function showVideoPreview(videoSrc) {
+        document.getElementById('previewVideo').style.display = "block";
+        document.getElementById('preview-section').style.display = "block";
+        document.getElementById('previewImage').style.display = "none";
+        document.getElementById('previewVideo').src = videoSrc;
+    }
+
     const imageInput = document.getElementById('avatar');
     imageInput.addEventListener('change', handleFileSelect);
+
+
 
 </script>
 

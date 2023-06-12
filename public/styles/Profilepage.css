@@ -5,7 +5,7 @@
     justify-content: space-evenly;
     align-items: center;
     /* border: 2px solid red; */
-    height: 85vh;
+    height: 100vh;
 }
 
 .profile-image img {
@@ -99,4 +99,10 @@
     padding: 1rem;
     border-radius: 10px;
     width: 70%;
+}
+
+#feature-btns{
+    position: sticky;
+    bottom: 0;
+    background-color: #0f0f0f;
 }
