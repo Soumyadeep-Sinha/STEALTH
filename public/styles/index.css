@@ -7,7 +7,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  padding: 20px;
+  /* padding: 20px; */
   height: 100vh;
   background-color: #232931;
 }
@@ -60,10 +60,11 @@ code {
   /*box-shadow: 0 0 5px 5px #2a0156;*/
   justify-content: space-between;
   align-items: center;
-  border-radius: 100px;
+  /* border-radius: 100px; */
   margin-bottom: 20px;
   padding: 1px;
-  position: relative;
+  position: sticky;
+  top: 0;
 }
 
 .Mainheader h2 {

@@ -12,6 +12,7 @@
     background-position: center; */
     z-index: 1;
     font-family: 'Bruno Ace SC', cursive;
+    height: 100vh;
 }
 
 #wrapper {
