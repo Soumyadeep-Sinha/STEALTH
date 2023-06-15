@@ -88,16 +88,6 @@
     color: white;
 }
 
-
-
-
-
-
-
-
-
-
-
 .react-btn-like{
     color: white;
 }
@@ -142,3 +132,11 @@
     }
 }
 
+
+.refresh-btn{
+    background-color: #8c06d4;
+    color: white;
+    border-radius: 50px;
+    padding: 5px 10px;
+    margin: 10px 0;
+}

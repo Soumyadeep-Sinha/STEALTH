@@ -7,6 +7,7 @@ const geoip = require('geoip-lite');
 require("dotenv").config();
 const bcrypt = require('bcrypt');
 const saltRounds = 14;
+const fs = require("fs");
 
 //------------- Copyright ------------------ Soumyadeep Sinha ---------------- Node Js----------------
 
@@ -14,11 +15,21 @@ const port = 3000;
 
 const app = express();
 
+app.use((req, res, next) => {
+  fs.access("./public/DND.LICENSE.txt", fs.constants.F_OK, (err) => {
+    if (err) {
+      res.send('You are not authorized to use the software. Please provide a valid license.');
+    } else {
+      next();
+    }
+  });
+});
+
 // CONNECTION
 const locale = "mongodb://localhost:27017/stealthDB";
 const uri = process.env.CONNECTOR;
 mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
-    .then(() => console.log("successfully connected to your MongoDB database."))
+.then(() => console.log("successfully connected to your MongoDB database."))
     .catch((error) => {
         console.log(error)
         res.render("errorPage", { code: "503", message: "SERVICE UNAVAILABLE" });

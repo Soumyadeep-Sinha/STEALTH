@@ -157,6 +157,8 @@
                                             </div>
                         </div>
                         <% }) %>
+
+                        <p style="color: aliceblue;">It might be time to refresh</p>
                 </div>
 
                 <!-- right -->
@@ -175,7 +177,7 @@
                             <input type="text" placeholder="Enter caption" id="cap-input" name="caption" required />
                             <div class="align-btn">
                                 <input type="file" id="avatar" name="image"
-                                    accept="image/png, image/jpeg, image/gif, video/mp4, video/avi, video/mov"
+                                    accept="image/*, video/*"
                                     required />
                                 <button type="submit"><i class="fa-solid fa-check"></i> Create </button>
                             </div>
@@ -223,6 +225,9 @@
                     <div class="Footer-section" id="footer-sec">
                         <p>copyright ©️ <%= year %> STEALTH</p>
                         <p>App Created by Soumyadeep</p>
+                        <form action="/home" method="get">
+                            <button class="refresh-btn">Refresh Page</button>
+                        </form>
                     </div>
                 </div>
 
