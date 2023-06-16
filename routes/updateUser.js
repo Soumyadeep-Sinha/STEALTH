@@ -2,13 +2,16 @@ const express = require("express");
 const router = express.Router();
 const session = require('express-session');
 const User = require("./userSchema")
+const bcrypt = require('bcrypt');
+const saltRounds = 14;
 
 router.post("/UpdateUser", async (req, res) => {
     let oldPassword = req.body.oldpwd;
     const search = await User.findOne({ _id: req.session._id }); 
     const retrievedpwd = search.Password;
+    const isMatch = await bcrypt.compare(oldPassword, retrievedpwd);
 
-    if (retrievedpwd === oldPassword) {
+    if (isMatch) {
         await User.findById(search._id)
             .then(async (document) => {
                 if (document) {
@@ -27,7 +30,7 @@ router.post("/UpdateUser", async (req, res) => {
                     if(!req.body.newpwd){
                         document.Password = search.Password;
                     }else{
-                        document.Password = req.body.newpwd;
+                        document.Password = await bcrypt.hash(req.body.newpwd, saltRounds);
                     }
 
                     await document.save()
