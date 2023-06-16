@@ -7,7 +7,7 @@
     justify-content: center;
     align-items: center;
     padding: 10px;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     text-align: center;
 }
 
@@ -19,7 +19,7 @@
 .preview-img{
     width: 250px;
     height: 200px;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     border: 2px solid rgb(135, 135, 135);
     background-color: rgb(0, 0, 0);
 }
@@ -111,10 +111,10 @@
 .react-btn-award:hover{
     color: yellow;
     font-size: 30px;
-    animation: circle 0.5s 1;
+    /* animation: circle 0.5s 1; */
 }
 
-@keyframes circle {
+/* @keyframes circle {
     0%{
         transform: rotate(0deg)
     }
@@ -130,7 +130,7 @@
     100%{
         transform: rotate(360deg)
     }
-}
+} */
 
 
 .refresh-btn{

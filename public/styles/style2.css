@@ -7,7 +7,7 @@
 
 .new-post {
     background-color: #1d1d1d;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     padding: 10px;
     display: flex;
     flex-direction: column;
@@ -23,7 +23,7 @@
     align-items: center;
     padding: 5px;
     margin-bottom: 10px;
-    border-radius: 20px;
+    /* border-radius: 20px; */
 }
 
 .post-form input {

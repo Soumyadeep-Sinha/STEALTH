@@ -5,7 +5,7 @@
     justify-content: space-evenly;
     align-items: center;
     /* border: 2px solid red; */
-    height: 100vh;
+    height: 80vh;
 }
 
 .profile-image img {
@@ -22,7 +22,7 @@
     justify-content: center;
     width: 25%;
     padding: 30px 20px;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     background-color: #181818;
 }
 

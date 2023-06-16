@@ -17,7 +17,7 @@
     background-color: #1b1b1b;
     color: white;
     padding: 20px;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     margin-bottom: 20px;
 }
 
@@ -26,7 +26,7 @@
 }
 
 .endorsements{
-    border-radius: 20px;
+    /* border-radius: 20px; */
     color: aliceblue;
     padding: 10px;
     margin-bottom: 20px;
@@ -41,7 +41,7 @@
 
 .bio{
     background-color: #1d1d1d;
-    border-radius: 20px;
+    /* border-radius: 20px; */
     padding: 20px;
     text-align: left;
 }

@@ -18,8 +18,8 @@ router.post('/performAction', (req, res) => {
             const search = await User.findOne({ UserName: post.UploaderName });
 
             if (action === 'like') {
-                // console.log("action --> liked");
-                if (!post.LikedBy.includes(userId)) {
+                console.log("action --> liked");
+                if (!post.LikedBy.includes(userId.toString())) {
                     post.Likes++;
 
                     let totalLikes = search.TotalLikes;
@@ -30,31 +30,31 @@ router.post('/performAction', (req, res) => {
                         { new: true }
                     );
 
-                    if ((post.DislikedBy.includes(userId))) {
+                    if ((post.DislikedBy.includes(userId.toString()))) {
                         post.Dislikes--;
                     }
-                    post.LikedBy.push(userId);
-                    post.DislikedBy.pop(userId);
+                    post.LikedBy.push(userId.toString());
+                    post.DislikedBy.pop(userId.toString());
                 } else {
-                    //console.log("already liked");
+                    console.log("already liked");
                     responseSent = true;
                 }
             } else if (action === 'dislike') {
-                // console.log("action --> disliked");
-                if (!post.DislikedBy.includes(userId)) {
+                console.log("action --> disliked");
+                if (!post.DislikedBy.includes(userId.toString())) {
                     post.Dislikes++;
-                    if ((post.LikedBy.includes(userId))) {
+                    if ((post.LikedBy.includes(userId.toString()))) {
                         post.Likes--;
                     }
-                    post.DislikedBy.push(userId);
-                    post.LikedBy.pop(userId);
+                    post.DislikedBy.push(userId.toString());
+                    post.LikedBy.pop(userId.toString());
                 } else {
-                    //console.log("already disliked");
+                    console.log("already disliked");
                     responseSent = true;
                 }
             } else if (action === 'award') {
-                // console.log("action --> award");
-                if (!post.AwardedBy.includes(userId)) {
+                console.log("action --> award");
+                if (!post.AwardedBy.includes(userId.toString())) {
                     post.Awards++;
                     let totalAwards = search.TotalAwards;
                     totalAwards++;
@@ -65,9 +65,9 @@ router.post('/performAction', (req, res) => {
                         { new: true }
                     );
 
-                    post.AwardedBy.push(userId);
+                    post.AwardedBy.push(userId.toString());
                 } else {
-                    //console.log("already awarded")
+                    console.log("already awarded")
                     responseSent = true;
                 }
             }

@@ -116,8 +116,7 @@
 
                             </div>
 
-                            <% function getFileExtension(filePath) { return filePath.split('.').pop().toLowerCase(); }
-                                %>
+                            <% function getFileExtension(filePath) { return filePath.split('.').pop().toLowerCase(); } %>
 
                                 <% if (['mp4', 'avi' , 'mov' ].includes(getFileExtension(post.ImageUrl))) { %>
                                     <video src="../<%= post.ImageUrl %>" poster="../images/vidPreview.jpg"

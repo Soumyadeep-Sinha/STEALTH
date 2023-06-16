@@ -16,7 +16,7 @@ body {
   display: none;
 }
 
-/*div{
+/* div{
   border: 1px solid rgb(255, 47, 47);
 }
 img{
@@ -27,7 +27,7 @@ button{
 }
 form{
   border: 1px solid yellow;
-}*/
+} */
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -36,8 +36,9 @@ code {
 
 .mainsection {
   display: flex;
-  height: 100vh;
+  height: 90vh;
   justify-content: center;
+  position: fixed;
 }
 
 .content {
@@ -77,7 +78,7 @@ code {
 .topLine {
   display: flex;
   background-color: #2f2f2f;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   align-items: center;
   width: 100%;
 }
@@ -108,7 +109,7 @@ code {
 .postimage {
   width: 98%;
   height: 80%;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   margin: 20px 0;
   border: 3px solid rgb(70, 70, 70);
 }
@@ -118,7 +119,7 @@ code {
   width: 80%;
   padding: 15px;
   background-color: #1b1b1b;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -131,7 +132,7 @@ code {
   display: flex;
   color: white;
   padding: 2px 10px;
-  border-radius: 20px;
+  /* border-radius: 20px; */
   align-items: center;
   background-color: #2f2f2f;
 }
