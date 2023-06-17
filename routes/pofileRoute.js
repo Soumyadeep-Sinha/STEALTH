@@ -7,6 +7,8 @@ const router = express.Router();
 router.get("/profile", async (req, res) => {
     const username = req.session.username;
     const id = req.session._id;
+    const userID = req.session._id;
+     
     let year = new Date().getFullYear();
     if (req.session._id) {
         await Post.find({ Uploader: req.session._id })
@@ -19,6 +21,7 @@ router.get("/profile", async (req, res) => {
                 res.render("profilePage",
                     {
                         username,
+                        userID,
                         year,
                         posts,
                         totalLikes: req.session.totallikes,

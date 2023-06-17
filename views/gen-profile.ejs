@@ -2,206 +2,215 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>
-        <%=username%> Profile
-    </title>
-    <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%=username%> Profile
+  </title>
+  <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../styles/Profilepage.css">
-    <link rel="stylesheet" href="../styles/index.css">
-    <link rel="stylesheet" href="../styles/style3.css">
-    <link rel="stylesheet" href="../styles/style2.css">
-    <link rel="stylesheet" href="../styles/style1.css">
-    <link rel="stylesheet" href="../styles/responsive.css">
-    <link rel="stylesheet" href="../styles/commentOverlay.css">
+  <link rel="stylesheet" href="../styles/Profilepage.css">
+  <link rel="stylesheet" href="../styles/index.css">
+  <link rel="stylesheet" href="../styles/style3.css">
+  <link rel="stylesheet" href="../styles/style2.css">
+  <link rel="stylesheet" href="../styles/style1.css">
+  <link rel="stylesheet" href="../styles/responsive.css">
+  <link rel="stylesheet" href="../styles/commentOverlay.css">
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
-        data-auto-replace-svg="nest"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" data-auto-replace-svg="nest"></script>
 
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
 <body>
-    <% posts.forEach((post)=> { %>
-        <div class="comment-area" id="comment-section-<%= post._id %>">
-            <div class="comments">
-                <h1>Comments</h1>
-                <form action="/sendComment/<%= post._id %>" class="message-send" method="post">
-                    <textarea name="newComment" id="" rows="1" placeholder="Comment Something ..."></textarea>
-                    <button type="submit" class="send-msg-btn"><i class="fa-regular fa-comment-dots"></i></button>
-                    <button type="button" class="cancel-button" onclick="closeComment('<%= post._id %>')"><i
-                            class="fa-regular fa-circle-xmark"></i></button>
-                </form>
-                <% post.Comments.forEach((cmt)=> { %>
-                    <div class="commentarea">
-                        <p>
-                            <%= cmt %>
-                        </p>
-                    </div>
-                    <% }) %>
-            </div>
-            <script>
-                const openComment = (postId) => {
-                    document.getElementById("comment-section-" + postId).style.visibility = "visible";
-                }
-                const closeComment = (postId) => {
-                    document.getElementById("comment-section-" + postId).style.visibility = "hidden";
-                }
-            </script>
+  <% posts.forEach((post)=> { %>
+  <div class="comment-area" id="comment-section-<%= post._id %>">
+    <div class="comments">
+      <h1>Comments</h1>
+      <form action="/sendComment/<%= post._id %>" class="message-send" method="post">
+        <textarea name="newComment" id="" rows="1" placeholder="Comment Something ..."></textarea>
+        <button type="submit" class="send-msg-btn"><i class="fa-regular fa-comment-dots"></i></button>
+        <button type="button" class="cancel-button" onclick="closeComment('<%= post._id %>')"><i class="fa-regular fa-circle-xmark"></i></button>
+      </form>
+      <% post.Comments.forEach((cmt)=> { %>
+      <div class="commentarea">
+        <p>
+          <%= cmt %>
+        </p>
+      </div>
+      <% }) %>
+    </div>
+    <script>
+      const openComment = (postId) => {
+        document.getElementById("comment-section-" + postId).style.visibility = "visible";
+      }
+      const closeComment = (postId) => {
+        document.getElementById("comment-section-" + postId).style.visibility = "hidden";
+      }
+    </script>
+  </div>
+  <% }) %>
+
+  <!-- header -->
+  <div class="Mainheader" id="navbar">
+    <h2>STEALTH</h2>
+    <form action="/search" method="post" class="searchBar">
+      <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <input name="searchName" type="text" class="search-box" placeholder="search someone" required />
+    </form>
+  </div>
+  <button class="more-options" id="show-btn" onclick="showmore()">View Profile</button>
+  <button class="more-options" id="close-btn" onclick="collapse()">Hide</button>
+
+  <div class="profile-mainsection">
+
+
+    <div class="profile-section" id="misc-section">
+      <div class="profile-image">
+        <img src="../images/dummy.jpg" alt="">
+      </div>
+      <div class="profile-content">
+        <h2 class="profile-name">
+          <%=username%>
+        </h2>
+        <div class="handle-endoresements">
+          <h2 class="general-info"><i class="fa-solid fa-thumbs-up"></i>
+            <%=totalLikes%>
+          </h2>
+          <h2 class="general-info"><i class="fa-solid fa-award"></i>
+            <%=totalAwards%>
+          </h2>
         </div>
-        <% }) %>
+        <h3 class="bio-text">
+          <%=Bio%>
+        </h3>
+      </div>
 
-            <!-- header -->
-            <div class="Mainheader" id="navbar">
-                <h2>STEALTH</h2>
-                <form action="/search" method="post" class="searchBar">
-                    <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <input name="searchName" type="text" class="search-box" placeholder="search someone" required />
-                </form>
-            </div>
-            <button class="more-options" id="show-btn" onclick="showmore()">View Profile</button>
-            <button class="more-options" id="close-btn" onclick="collapse()">Hide</button>
+      <p style="color:white;">Copyright <%=year%>, STEALTH</p>
+    </div>
 
-            <div class="profile-mainsection">
+    <div class="content" id="profile-content">
+      <% posts.forEach((post)=> { %>
+      <div class="caption" id="post-box">
+        <div class="topLine">
+          <img src="../images/dummy.jpg" alt="postimage" class="avatar" />
 
+          <div class="details">
+            <h4>
+              <%=post.Caption%>
+            </h4>
+          </div>
 
-                <div class="profile-section" id="misc-section">
-                    <div class="profile-image">
-                        <img src="../images/dummy.jpg" alt="">
-                    </div>
-                    <div class="profile-content">
-                        <h2 class="profile-name">
-                            <%=username%>
-                        </h2>
-                        <div class="handle-endoresements">
-                            <h2 class="general-info"><i class="fa-solid fa-thumbs-up"></i>
-                                <%=totalLikes%>
-                            </h2>
-                            <h2 class="general-info"><i class="fa-solid fa-award"></i>
-                                <%=totalAwards%>
-                            </h2>
-                        </div>
-                        <h3 class="bio-text">
-                            <%=Bio%>
-                        </h3>
-                    </div>
-
-                    <p style="color:white;">Copyright <%=year%>, STEALTH</p>
-                </div>
-
-                <div class="content" id="profile-content">
-                    <% posts.forEach((post)=> { %>
-                        <div class="caption" id="post-box">
-                            <div class="topLine">
-                                <img src="../images/dummy.jpg" alt="postimage" class="avatar" />
-
-                                <div class="details">
-                                    <h4>
-                                        <%=post.Caption%>
-                                    </h4>
-                                </div>
-
-                            </div>
-                            <% function getFileExtension(filePath) { return filePath.split('.').pop().toLowerCase(); }
+        </div>
+        <% function getFileExtension(filePath) { return filePath.split('.').pop().toLowerCase(); }
                                 %>
 
-                                <% if (['mp4', 'avi' , 'mov' ].includes(getFileExtension(post.ImageUrl))) { %>
-                                    <video src="../<%= post.ImageUrl %>" poster="../images/vidPreview.jpg"
-                                        class="postimage" controls muted>
-                                        Your browser does not support the video tag.
-                                    </video>
-                                    <% } else { %>
-                                        <img src="../<%= post.ImageUrl %>" alt="postimage" class="postimage" />
-                                        <% } %>
+        <% if (['mp4', 'avi' , 'mov' ].includes(getFileExtension(post.ImageUrl))) { %>
+        <video src="../<%= post.ImageUrl %>" poster="../images/vidPreview.jpg" class="postimage" controls muted>
+          Your browser does not support the video tag.
+        </video>
+        <% } else { %>
+        <img src="../<%= post.ImageUrl %>" alt="postimage" class="postimage" />
+        <% } %>
 
 
-                                            <div class="action-btn">
-                                                <button class="react-btn-like"
-                                                    onclick="handleAction('<%= post._id %>', 'like')"><i
-                                                        class="fa-solid fa-thumbs-up"></i></button>
-                                                <p id="likesCount_<%= post._id %>">
-                                                    <%= post.Likes %>
-                                                </p>
+        <div class="action-btn">
+            <% if(!post.LikedBy.some(user => user.equals(userID))) { %>
+            <button class="react-btn-like" onclick="handleAction('<%= post._id %>', 'like')"><i class="fa-solid fa-thumbs-up"></i></button>
+            <% } else { %>
+            <button class="react-btn-like" onclick="handleAction('<%= post._id %>', 'like')" style="color: greenyellow;"><i class="fa-solid fa-thumbs-up"></i></button>
+            <% } %>
+  
+            <p id="likesCount_<%= post._id %>">
+              <%= post.Likes %>
+            </p>
+  
+  
+            <% if(!post.DislikedBy.some(user => user.equals(userID))) { %>
+            <button class="react-btn-dislike" onclick="handleAction('<%= post._id %>', 'dislike')"><i class="fa-solid fa-thumbs-down"></i></button>
+            <% } else { %>
+            <button class="react-btn-dislike" onclick="handleAction('<%= post._id %>', 'dislike')" style="color: red;" ><i class="fa-solid fa-thumbs-down"></i></button>
+            <% } %>
+  
+            <p id="dislikesCount_<%= post._id %>">
+              <%= post.Dislikes %>
+            </p>
+  
+            <% if(!post.AwardedBy.some(user => user.equals(userID))) { %>
+            <button class="react-btn-award" onclick="handleAction('<%= post._id %>', 'award')"><i class="fa-solid fa-award"></i></button>
+            <% } else { %>
+            <button class="react-btn-award" onclick="handleAction('<%= post._id %>', 'award')" style="color: yellow;"><i class="fa-solid fa-award"></i></button>
+            <% } %>
+  
+            <p id="awardsCount_<%= post._id %>">
+              <%= post.Awards %>
+            </p>
+  
+            <button class="react-btn-like" onclick="openComment('<%= post._id %>')"><i class="fa-solid fa-comment-dots"></i></button>
+            <p>
+              <%= post.Comments.length %>
+            </p>
+          </div>
+      </div>
+      <% }) %>
+    </div>
 
-                                                <button class="react-btn-dislike"
-                                                    onclick="handleAction('<%= post._id %>', 'dislike')"><i
-                                                        class="fa-solid fa-thumbs-down"></i></button>
-                                                <p id="dislikesCount_<%= post._id %>">
-                                                    <%= post.Dislikes %>
-                                                </p>
+  </div>
 
-                                                <button class="react-btn-award"
-                                                    onclick="handleAction('<%= post._id %>', 'award')"><i
-                                                        class="fa-solid fa-award"></i></button>
-                                                <p id="awardsCount_<%= post._id %>">
-                                                    <%= post.Awards %>
-                                                </p>
-
-                                                <button class="react-btn-like"
-                                                    onclick="openComment('<%= post._id %>')"><i
-                                                        class="fa-solid fa-comment-dots"></i></button>
-                                            </div>
-                        </div>
-                        <% }) %>
-                </div>
-
-            </div>
-
-            <div class="feature-buttons" id="feature-btns">
-                <form action="/profile" method="get">
-                    <button class="general-btn"><i class="fa-solid fa-user"></i></button>
-                </form>
-                <form action="/Update" method="get">
-                    <button class="general-btn"><i class="fa-solid fa-pen-to-square"></i></button>
-                </form>
-                <form action="/home" method="get">
-                    <button class="general-btn"><i class="fa-solid fa-house"></i></button>
-                </form>
-                <form action="/" method="get">
-                    <button class="general-btn"><i class="fa-solid fa-user-ninja"></i></button>
-                </form>
+  <div class="feature-buttons" id="feature-btns">
+    <form action="/profile" method="get">
+      <button class="general-btn"><i class="fa-solid fa-user"></i></button>
+    </form>
+    <form action="/Update" method="get">
+      <button class="general-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+    </form>
+    <form action="/home" method="get">
+      <button class="general-btn"><i class="fa-solid fa-house"></i></button>
+    </form>
+    <form action="/" method="get">
+      <button class="general-btn"><i class="fa-solid fa-user-ninja"></i></button>
+    </form>
 
 
-                <form action="/logout" method="get">
-                    <button class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i></button>
-                </form>
-            </div>
+    <form action="/logout" method="get">
+      <button class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i></button>
+    </form>
+  </div>
 </body>
 
 <script>
+  const showmore = () => {
+    document.getElementById("misc-section").style.display = "block";
+    document.getElementById("close-btn").style.display = "block";
+    document.getElementById("show-btn").style.display = "none";
+  }
+  const collapse = () => {
+    document.getElementById("misc-section").style.display = "none";
+    document.getElementById("close-btn").style.display = "none";
+    document.getElementById("show-btn").style.display = "block";
+  }
 
-    const showmore = () => {
-        document.getElementById("misc-section").style.display = "block";
-        document.getElementById("close-btn").style.display = "block";
-        document.getElementById("show-btn").style.display = "none";
-    }
-    const collapse = () => {
-        document.getElementById("misc-section").style.display = "none";
-        document.getElementById("close-btn").style.display = "none";
-        document.getElementById("show-btn").style.display = "block";
-    }
-
-    // Function to handle the action button click
-    function handleAction(postId, action) {
-        $.ajax({
-            method: 'POST',
-            url: '/performAction',
-            data: { postId, action },
-            success: function (response) {
-                // Update the counts displayed on the page
-                $('#likesCount_' + postId).text(response.likes);
-                $('#dislikesCount_' + postId).text(response.dislikes);
-                $('#awardsCount_' + postId).text(response.awards);
-            },
-            error: function (xhr, status, error) {
-                console.log(error);
-            }
-        });
-    }
-
+  // Function to handle the action button click
+  function handleAction(postId, action) {
+    $.ajax({
+      method: 'POST',
+      url: '/performAction',
+      data: {
+        postId,
+        action
+      },
+      success: function(response) {
+        // Update the counts displayed on the page
+        $('#likesCount_' + postId).text(response.likes);
+        $('#dislikesCount_' + postId).text(response.dislikes);
+        $('#awardsCount_' + postId).text(response.awards);
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
+      }
+    });
+  }
 </script>
 
 </html>

@@ -38,7 +38,6 @@ code {
   display: flex;
   height: 90vh;
   justify-content: center;
-  position: fixed;
 }
 
 .content {
@@ -88,7 +87,7 @@ code {
 }
 
 .details h4 {
-  font-size: 24px;
+  font-size: 20px;
   color: azure;
   margin: 5px 0;
 }
@@ -97,6 +96,7 @@ code {
   color: azure;
   text-align: left;
   margin: 2px;
+  font-size: 14px;
 }
 
 .avatar {
@@ -104,10 +104,11 @@ code {
   height: 50px;
   border-radius: 50px;
   margin: 10px 20px;
+  border: 2px solid #c0c0c0;
 }
 
 .postimage {
-  width: 98%;
+  width: 99%;
   height: 80%;
   /* border-radius: 20px; */
   margin: 20px 0;
@@ -128,7 +129,7 @@ code {
 }
 
 .action-btn {
-  width: 95%;
+  width: 97%;
   display: flex;
   color: white;
   padding: 2px 10px;

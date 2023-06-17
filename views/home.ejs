@@ -2,310 +2,314 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Home</title>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Home</title>
 
-    <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
+  <link rel="shortcut icon" href="../favicon/favicon.ico" type="image/x-icon">
 
-    <link rel="stylesheet" href="../styles/auth.css">
-    <link rel="stylesheet" href="../styles/style1.css">
-    <link rel="stylesheet" href="../styles/style2.css">
-    <link rel="stylesheet" href="../styles/style3.css">
-    <link rel="stylesheet" href="../styles/index.css">
-    <link rel="stylesheet" href="../styles/responsive.css">
-    <link rel="stylesheet" href="../styles/commentOverlay.css">
+  <link rel="stylesheet" href="../styles/auth.css">
+  <link rel="stylesheet" href="../styles/style1.css">
+  <link rel="stylesheet" href="../styles/style2.css">
+  <link rel="stylesheet" href="../styles/style3.css">
+  <link rel="stylesheet" href="../styles/index.css">
+  <link rel="stylesheet" href="../styles/responsive.css">
+  <link rel="stylesheet" href="../styles/commentOverlay.css">
 
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"
-        data-auto-replace-svg="nest"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js" data-auto-replace-svg="nest"></script>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 </head>
 
 <body>
-    <% posts.forEach((post)=> { %>
-        <div class="comment-area" id="comment-section-<%= post._id %>">
-            <div class="comments">
-                <h1>Comments</h1>
-                <form action="/sendComment/<%= post._id %>" class="message-send" method="post">
-                    <textarea name="newComment" id="" rows="1" placeholder="Comment Something ..."></textarea>
-                    <button type="submit" class="send-msg-btn"><i class="fa-regular fa-comment-dots"></i></button>
-                    <button type="button" class="cancel-button" onclick="closeComment('<%= post._id %>')"><i
-                            class="fa-regular fa-circle-xmark"></i></button>
-                </form>
-                <% post.Comments.forEach((cmt)=> { %>
-                    <div class="commentarea">
-                        <p>
-                            <%= cmt %>
-                        </p>
-                    </div>
-                    <% }) %>
-            </div>
-            <script>
-                const openComment = (postId) => {
-                    document.getElementById("comment-section-" + postId).style.visibility = "visible";
-                }
-                const closeComment = (postId) => {
-                    document.getElementById("comment-section-" + postId).style.visibility = "hidden";
-                }
-            </script>
+  <% posts.forEach((post)=> { %>
+  <div class="comment-area" id="comment-section-<%= post._id %>">
+    <div class="comments">
+      <h1>Comments</h1>
+      <form action="/sendComment/<%= post._id %>" class="message-send" method="post">
+        <textarea name="newComment" id="" rows="1" placeholder="Comment Something ..."></textarea>
+        <button type="submit" class="send-msg-btn"><i class="fa-regular fa-comment-dots"></i></button>
+        <button type="button" class="cancel-button" onclick="closeComment('<%= post._id %>')"><i class="fa-regular fa-circle-xmark"></i></button>
+      </form>
+      <% post.Comments.forEach((cmt)=> { %>
+      <div class="commentarea">
+        <p>
+          <%= cmt %>
+        </p>
+      </div>
+      <% }) %>
+    </div>
+    <script>
+      const openComment = (postId) => {
+        document.getElementById("comment-section-" + postId).style.visibility = "visible";
+      }
+      const closeComment = (postId) => {
+        document.getElementById("comment-section-" + postId).style.visibility = "hidden";
+      }
+    </script>
+  </div>
+  <% }) %>
+
+
+
+
+  <!-- header -->
+  <div class="Mainheader" id="navbar">
+    <h2>STEALTH</h2>
+    <form action="/search" method="post" class="searchBar">
+      <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+      <input name="searchName" type="text" class="search-box" placeholder="search someone" required />
+    </form>
+  </div>
+
+  <!-- mainsection -->
+  <button class="more-options" id="show-btn" onclick="showmore()">OPTIONS</button>
+  <button class="more-options" id="close-btn" onclick="collapse()">CLOSE</button>
+
+  <!-- left -->
+  <div class="mainsection">
+
+    <div class="profileinfo">
+
+      <div class="profile-comp" id="profile-info-basic">
+        <img src="../images/dummy.jpg" alt="postimage" class="profile-pic" />
+        <p>
+          <%= username %>
+        </p>
+      </div>
+      <div class="endorsements" id="endorsement-section">
+        <h3>
+          <i class="fa-solid fa-thumbs-up"></i>&nbsp;<%=totallikes%>
+        </h3>
+        <h3>
+          <i class="fa-solid fa-award"></i> &nbsp;<%=totalawards%>
+        </h3>
+      </div>
+
+      <div class="bio" id="bio-section">
+        <p>
+          <%= bio %>
+        </p>
+      </div>
+
+    </div>
+
+    <!-- main posts -->
+    <div class="content">
+      <% posts.forEach((post)=> { %>
+      <div class="caption" id="post-box">
+        <div class="topLine">
+          <a href="/search/<%=post.UploaderName%>"><img src="../images/dummy.jpg" alt="postimage" class="avatar" /></a>
+
+          <div class="details">
+            <p>
+              <%=post.UploaderName%>
+            </p>
+            <h4>
+              <%=post.Caption%>
+            </h4>
+          </div>
+
         </div>
-        <% }) %>
+
+        <% function getFileExtension(filePath) { return filePath.split('.').pop().toLowerCase(); }
+                                %>
+
+        <% if (['mp4', 'avi' , 'mov' ].includes(getFileExtension(post.ImageUrl))) { %>
+        <video src="../<%= post.ImageUrl %>" poster="../images/vidPreview.jpg" class="postimage" controls muted>
+          Your browser does not support the video tag.
+        </video>
+        <% } else { %>
+        <img src="../<%= post.ImageUrl %>" alt="postimage" class="postimage" />
+        <% } %>
 
 
+        <div class="action-btn">
+          <% if(!post.LikedBy.some(user => user.equals(userID))) { %>
+          <button class="react-btn-like" onclick="handleAction('<%= post._id %>', 'like')"><i class="fa-solid fa-thumbs-up"></i></button>
+          <% } else { %>
+          <button class="react-btn-like" onclick="handleAction('<%= post._id %>', 'like')" style="color: greenyellow;"><i class="fa-solid fa-thumbs-up"></i></button>
+          <% } %>
+
+          <p id="likesCount_<%= post._id %>">
+            <%= post.Likes %>
+          </p>
 
 
-            <!-- header -->
-            <div class="Mainheader" id="navbar">
-                <h2>STEALTH</h2>
-                <form action="/search" method="post" class="searchBar">
-                    <button class="search-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <input name="searchName" type="text" class="search-box" placeholder="search someone" required />
-                </form>
-            </div>
+          <% if(!post.DislikedBy.some(user => user.equals(userID))) { %>
+          <button class="react-btn-dislike" onclick="handleAction('<%= post._id %>', 'dislike')"><i class="fa-solid fa-thumbs-down"></i></button>
+          <% } else { %>
+          <button class="react-btn-dislike" onclick="handleAction('<%= post._id %>', 'dislike')" style="color: red;" ><i class="fa-solid fa-thumbs-down"></i></button>
+          <% } %>
 
-            <!-- mainsection -->
-            <button class="more-options" id="show-btn" onclick="showmore()">OPTIONS</button>
-            <button class="more-options" id="close-btn" onclick="collapse()">CLOSE</button>
+          <p id="dislikesCount_<%= post._id %>">
+            <%= post.Dislikes %>
+          </p>
 
-            <!-- left -->
-            <div class="mainsection">
+          <% if(!post.AwardedBy.some(user => user.equals(userID))) { %>
+          <button class="react-btn-award" onclick="handleAction('<%= post._id %>', 'award')"><i class="fa-solid fa-award"></i></button>
+          <% } else { %>
+          <button class="react-btn-award" onclick="handleAction('<%= post._id %>', 'award')" style="color: yellow;"><i class="fa-solid fa-award"></i></button>
+          <% } %>
 
-                <div class="profileinfo">
+          <p id="awardsCount_<%= post._id %>">
+            <%= post.Awards %>
+          </p>
 
-                    <div class="profile-comp" id="profile-info-basic">
-                        <img src="../images/dummy.jpg" alt="postimage" class="profile-pic" />
-                        <p>
-                            <%= username %>
-                        </p>
-                    </div>
-                    <div class="endorsements" id="endorsement-section">
-                        <h3>
-                            <i class="fa-solid fa-thumbs-up"></i>&nbsp;<%=totallikes%>
-                        </h3>
-                        <h3>
-                            <i class="fa-solid fa-award"></i> &nbsp;<%=totalawards%>
-                        </h3>
-                    </div>
+          <button class="react-btn-like" onclick="openComment('<%= post._id %>')"><i class="fa-solid fa-comment-dots"></i></button>
+          <p>
+            <%= post.Comments.length %>
+          </p>
+        </div>
 
-                    <div class="bio" id="bio-section">
-                        <p>
-                            <%= bio %>
-                        </p>
-                    </div>
+      </div>
+      <% }) %>
 
-                </div>
+      <p style="color: aliceblue;">It might be time to refresh</p>
+    </div>
 
-                <!-- main posts -->
-                <div class="content">
-                    <% posts.forEach((post)=> { %>
-                        <div class="caption" id="post-box">
-                            <div class="topLine">
-                                <a href="/search/<%=post.UploaderName%>"><img src="../images/dummy.jpg" alt="postimage" class="avatar" /></a>
+    <!-- right -->
 
-                                <div class="details">
-                                    <p>
-                                        <%=post.UploaderName%>
-                                    </p>
-                                    <h4>
-                                        <%=post.Caption%>
-                                    </h4>
-                                </div>
+    <div class="misclaneous" id="misc-section">
+      <form action="/searchPost" method="post" class="searchPostBar">
+        <input name="searchPost" type="text" class="search-post-box" placeholder="search posts" required />
+        <button class="search-post-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
+      </form>
 
-                            </div>
+      <!-- new post -->
+      <div class="new-post" id="new-post">
+        <form action="/createPost" method="post" class="post-form" id="new-post-form" enctype="multipart/form-data">
+          <input type="text" placeholder="Enter caption" id="cap-input" name="caption" required />
+          <div class="align-btn">
+            <input type="file" id="avatar" name="image" accept="image/*, video/*" required />
+            <button type="submit"><i class="fa-solid fa-check"></i> Create </button>
+          </div>
+        </form>
 
-                            <% function getFileExtension(filePath) { return filePath.split('.').pop().toLowerCase(); } %>
-
-                                <% if (['mp4', 'avi' , 'mov' ].includes(getFileExtension(post.ImageUrl))) { %>
-                                    <video src="../<%= post.ImageUrl %>" poster="../images/vidPreview.jpg"
-                                        class="postimage" controls muted>
-                                        Your browser does not support the video tag.
-                                    </video>
-                                    <% } else { %>
-                                        <img src="../<%= post.ImageUrl %>" alt="postimage" class="postimage" />
-                                        <% } %>
+        <div id="preview-section" style="display:none;">
+          <img id="previewImage" class="preview-img" style="display:none;" />
+          <video id="previewVideo" class="preview-img" style="display:none;" controls autoplay muted></video>
+        </div>
+      </div>
 
 
-                                            <div class="action-btn">
-                                                <button class="react-btn-like"
-                                                    onclick="handleAction('<%= post._id %>', 'like')"><i
-                                                        class="fa-solid fa-thumbs-up"></i></button>
-                                                <p id="likesCount_<%= post._id %>">
-                                                    <%= post.Likes %>
-                                                </p>
+      <div class="feature-buttons" id="feature-btns">
 
-                                                <button class="react-btn-dislike"
-                                                    onclick="handleAction('<%= post._id %>', 'dislike')"><i
-                                                        class="fa-solid fa-thumbs-down"></i></button>
-                                                <p id="dislikesCount_<%= post._id %>">
-                                                    <%= post.Dislikes %>
-                                                </p>
-
-                                                <button class="react-btn-award"
-                                                    onclick="handleAction('<%= post._id %>', 'award')"><i
-                                                        class="fa-solid fa-award"></i></button>
-                                                <p id="awardsCount_<%= post._id %>">
-                                                    <%= post.Awards %>
-                                                </p>
-
-                                                <button class="react-btn-like"
-                                                    onclick="openComment('<%= post._id %>')"><i
-                                                        class="fa-solid fa-comment-dots"></i></button>
-                                            </div>
-                        </div>
-                        <% }) %>
-
-                        <p style="color: aliceblue;">It might be time to refresh</p>
-                </div>
-
-                <!-- right -->
-
-                <div class="misclaneous" id="misc-section">
-                    <form action="/searchPost" method="post" class="searchPostBar">
-                        <input name="searchPost" type="text" class="search-post-box" placeholder="search posts"
-                            required />
-                        <button class="search-post-btn"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    </form>
-
-                    <!-- new post -->
-                    <div class="new-post" id="new-post">
-                        <form action="/createPost" method="post" class="post-form" id="new-post-form"
-                            enctype="multipart/form-data">
-                            <input type="text" placeholder="Enter caption" id="cap-input" name="caption" required />
-                            <div class="align-btn">
-                                <input type="file" id="avatar" name="image"
-                                    accept="image/*, video/*"
-                                    required />
-                                <button type="submit"><i class="fa-solid fa-check"></i> Create </button>
-                            </div>
-                        </form>
-
-                        <div id="preview-section" style="display:none;">
-                            <img id="previewImage" class="preview-img" style="display:none;" />
-                            <video id="previewVideo" class="preview-img" style="display:none;" controls autoplay muted></video>
-                        </div>
-                    </div>
+        <form action="/profile" method="get">
+          <button class="general-btn"><i class="fa-solid fa-user"></i></button>
+        </form>
+        <form action="/Update" method="get">
+          <button class="general-btn"><i class="fa-solid fa-pen-to-square"></i></button>
+        </form>
+        <form action="/home" method="get">
+          <button class="general-btn"><i class="fa-solid fa-house"></i></button>
+        </form>
+        <form action="/terms" method="">
+          <button class="general-btn"><i class="fa-solid fa-file-lines"></i></button>
+        </form>
+        <form action="/" method="get">
+          <button class="general-btn"><i class="fa-solid fa-user-ninja"></i></button>
+        </form>
+        <form action="/report" method="">
+          <button class="general-btn"><i class="fa-solid fa-bug"></i></button>
+        </form>
 
 
-                    <div class="feature-buttons" id="feature-btns">
+        <a href="https://github.com/Soumyadeep-Sinha/STEALTH" target="_blank"><button class="general-btn"><i class="fa-brands fa-github"></i></button>
+        </a>
 
-                        <form action="/profile" method="get">
-                            <button class="general-btn"><i class="fa-solid fa-user"></i></button>
-                        </form>
-                        <form action="/Update" method="get">
-                            <button class="general-btn"><i class="fa-solid fa-pen-to-square"></i></button>
-                        </form>
-                        <form action="/home" method="get">
-                            <button class="general-btn"><i class="fa-solid fa-house"></i></button>
-                        </form>
-                        <form action="/terms" method="">
-                            <button class="general-btn"><i class="fa-solid fa-file-lines"></i></button>
-                        </form>
-                        <form action="/" method="get">
-                            <button class="general-btn"><i class="fa-solid fa-user-ninja"></i></button>
-                        </form>
-                        <form action="/report" method="">
-                            <button class="general-btn"><i class="fa-solid fa-bug"></i></button>
-                        </form>
+        <form action="/logout" method="get">
+          <button class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i></button>
+        </form>
+      </div>
 
 
-                        <a href="https://github.com/Soumyadeep-Sinha/STEALTH" target="_blank"><button
-                                class="general-btn"><i class="fa-brands fa-github"></i></button>
-                        </a>
+      <div class="Footer-section" id="footer-sec">
+        <p>copyright ©️ <%= year %> STEALTH</p>
+        <p>App Created by Soumyadeep</p>
+        <form action="/home" method="get">
+          <button class="refresh-btn">Refresh Page</button>
+        </form>
+      </div>
+    </div>
 
-                        <form action="/logout" method="get">
-                            <button class="logout-btn"><i class="fa-solid fa-right-from-bracket"></i></button>
-                        </form>
-                    </div>
-
-
-                    <div class="Footer-section" id="footer-sec">
-                        <p>copyright ©️ <%= year %> STEALTH</p>
-                        <p>App Created by Soumyadeep</p>
-                        <form action="/home" method="get">
-                            <button class="refresh-btn">Refresh Page</button>
-                        </form>
-                    </div>
-                </div>
-
-            </div>
+  </div>
 
 
 
 </body>
 
 <script>
+  // handle collapse
+  const showmore = () => {
+    document.getElementById("misc-section").style.display = "block";
+    document.getElementById("close-btn").style.display = "block";
+    document.getElementById("show-btn").style.display = "none";
+  }
+  const collapse = () => {
+    document.getElementById("misc-section").style.display = "none";
+    document.getElementById("close-btn").style.display = "none";
+    document.getElementById("show-btn").style.display = "block";
+  }
 
-    // handle collapse
-    const showmore = () => {
-        document.getElementById("misc-section").style.display = "block";
-        document.getElementById("close-btn").style.display = "block";
-        document.getElementById("show-btn").style.display = "none";
-    }
-    const collapse = () => {
-        document.getElementById("misc-section").style.display = "none";
-        document.getElementById("close-btn").style.display = "none";
-        document.getElementById("show-btn").style.display = "block";
-    }
+  // Function to handle the action button click
+  function handleAction(postId, action) {
+    $.ajax({
+      method: 'POST',
+      url: '/performAction',
+      data: {
+        postId,
+        action
+      },
+      success: function(response) {
+        // Update the counts displayed on the page
+        $('#likesCount_' + postId).text(response.likes);
+        $('#dislikesCount_' + postId).text(response.dislikes);
+        $('#awardsCount_' + postId).text(response.awards);
+      },
+      error: function(xhr, status, error) {
+        console.log(error);
+      }
+    });
+  }
+  // preview image
 
-    // Function to handle the action button click
-    function handleAction(postId, action) {
-        $.ajax({
-            method: 'POST',
-            url: '/performAction',
-            data: { postId, action },
-            success: function (response) {
-                // Update the counts displayed on the page
-                $('#likesCount_' + postId).text(response.likes);
-                $('#dislikesCount_' + postId).text(response.dislikes);
-                $('#awardsCount_' + postId).text(response.awards);
-            },
-            error: function (xhr, status, error) {
-                console.log(error);
-            }
-        });
-    }
-    // preview image
+  function handleFileSelect(event) {
+    const file = event.target.files[0];
 
-    function handleFileSelect(event) {
-        const file = event.target.files[0];
-
-        if (file) {
-            const reader = new FileReader();
-            reader.onload = function (e) {
-                if (file.type.startsWith('image/')) {
-                    showImagePreview(e.target.result);
-                } else if (file.type.startsWith('video/')) {
-                    showVideoPreview(e.target.result);
-                } else {
-                    console.log('Unsupported file type');
-                }
-            };
-            reader.readAsDataURL(file);
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        if (file.type.startsWith('image/')) {
+          showImagePreview(e.target.result);
+        } else if (file.type.startsWith('video/')) {
+          showVideoPreview(e.target.result);
+        } else {
+          console.log('Unsupported file type');
         }
+      };
+      reader.readAsDataURL(file);
     }
+  }
 
-    function showImagePreview(imageSrc) {
-        document.getElementById('previewImage').style.display = "block";
-        document.getElementById('preview-section').style.display = "block";
-        document.getElementById('previewVideo').style.display = "none";
-        document.getElementById('previewImage').src = imageSrc;
-    }
+  function showImagePreview(imageSrc) {
+    document.getElementById('previewImage').style.display = "block";
+    document.getElementById('preview-section').style.display = "block";
+    document.getElementById('previewVideo').style.display = "none";
+    document.getElementById('previewImage').src = imageSrc;
+  }
 
-    function showVideoPreview(videoSrc) {
-        document.getElementById('previewVideo').style.display = "block";
-        document.getElementById('preview-section').style.display = "block";
-        document.getElementById('previewImage').style.display = "none";
-        document.getElementById('previewVideo').src = videoSrc;
-    }
+  function showVideoPreview(videoSrc) {
+    document.getElementById('previewVideo').style.display = "block";
+    document.getElementById('preview-section').style.display = "block";
+    document.getElementById('previewImage').style.display = "none";
+    document.getElementById('previewVideo').src = videoSrc;
+  }
 
-    const imageInput = document.getElementById('avatar');
-    imageInput.addEventListener('change', handleFileSelect);
-
-
-
+  const imageInput = document.getElementById('avatar');
+  imageInput.addEventListener('change', handleFileSelect);
 </script>
 
 </html>

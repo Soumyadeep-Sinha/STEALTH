@@ -10,6 +10,7 @@ router.post("/search", async (req, res) => {
         res.redirect("/login");
     }
     const username = req.body.searchName;
+    const userID = req.session._id;
     if(req.session.username === username){
         res.redirect("/profile");
     }
@@ -33,6 +34,7 @@ router.post("/search", async (req, res) => {
                     res.render("gen-profile",
                         {
                             username,
+                            userID,
                             year,
                             posts,
                             totalLikes: search.TotalLikes,
@@ -55,6 +57,7 @@ router.get("/search/:something", async (req, res) => {
         res.redirect("/login");
     }
     const username = req.params.something;
+    const userID = req.session._id;
     console.log(username);
     if(req.session.username === username){
         res.redirect("/profile");
@@ -79,6 +82,7 @@ router.get("/search/:something", async (req, res) => {
                     res.render("gen-profile",
                         {
                             username,
+                            userID,
                             year,
                             posts,
                             totalLikes: search.TotalLikes,
@@ -103,6 +107,7 @@ router.post("/searchPost", async (req, res) => {
     }
 
     const searchString = req.body.searchPost;
+    const userID = req.session._id;
     // console.log(searchString);
 
     let year = new Date().getFullYear();
@@ -114,7 +119,7 @@ router.post("/searchPost", async (req, res) => {
                 post.ImageUrl = post.ImageUrl.replace(/\\/g, '/');
                 post.ImageUrl = post.ImageUrl.replace(/public\//, '');
             });
-            res.render("postSearch",{posts});
+            res.render("postSearch",{posts, userID});
         })
         .catch(err => {
             console.log(err);
