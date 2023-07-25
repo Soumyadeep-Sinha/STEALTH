@@ -36,16 +36,15 @@ mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true })
     })
 
 
-const store = new MongoDBStore({
-    mongooseConnection: mongoose.connection,
-    collection: 'sessions'
-});
+// const store = new MongoDBStore({
+//     mongooseConnection: mongoose.connection,
+//     collection: 'sessions'
+// });
 
 app.use(session({
     secret: '##123#123##',
     resave: false,
     saveUninitialized: true,
-    store: store
 }));
 
 // initializer
