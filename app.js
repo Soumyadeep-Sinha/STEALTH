@@ -1,8 +1,8 @@
 const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
-const session = require('express-session');
-const MongoDBStore = require('connect-mongodb-session')(session);
+const session = require('cookie-session');
+// const MongoDBStore = require('connect-mongodb-session')(session);
 const geoip = require('geoip-lite');
 require("dotenv").config();
 const bcrypt = require('bcrypt');

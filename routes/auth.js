@@ -1,5 +1,5 @@
 const express = require("express");
-const session = require("express-session");
+const session = require("cookie-session");
 
 const router = express.Router();
 
@@ -22,14 +22,12 @@ router.get("/register", (req, res) => {
 })
 
 router.get('/logout', (req, res) => {
-    req.session.destroy((err) => {
-        if (err) {
-            console.log('Failed to destroy session: ', err);
-        } else {
-            console.log('Session destroyed successfully.');
-        }
+    req.session = null
+    if(!req.session){
         res.redirect('/login');
-    })
+    }else{
+        res.send("failed to destroy cookie data");
+    }
 })
 
 module.exports = router;
