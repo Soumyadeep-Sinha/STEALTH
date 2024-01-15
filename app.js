@@ -131,7 +131,7 @@ app.post("/login", async (req, res) => {
     } catch (error) {
         console.log(error)
         console.log("Not registered");
-        res.render("login", { error: "Not regestered", username: "" });
+        res.render("login", { error: "Not registered", username: "" });
     }
 })
 
