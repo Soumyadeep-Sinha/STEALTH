@@ -6,7 +6,7 @@ const session = require('cookie-session');
 const geoip = require('geoip-lite');
 require("dotenv").config();
 const bcrypt = require('bcrypt');
-const saltRounds = 14;
+const saltRounds = 12;
 const fs = require("fs");
 
 //------------- Copyright ------------------ Soumyadeep Sinha ---------------- Node Js----------------
@@ -71,7 +71,7 @@ app.post("/register", async (req, res) => {
     const password = req.body.password;
     const confPassword = req.body.confpassword;
 
-    const username = req.session.req.body.username;
+    const username = req.session.userName;
 
     if (password === confPassword) {
         try {
